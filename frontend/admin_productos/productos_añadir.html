@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../public/css/dashboard.css">
+    <link rel="stylesheet" href="../../public/css/perfil.css">
+    <title>Perfil del administrador</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+
+</head>
+
+<body>
+
+    <!-- Sidebar o menu lateral -->
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-flex">
+                <img src="../../Sources/img/marca.png" width="30px" alt="logo">
+
+                <div class="brand-icons">
+                    <span class="las la-bell"></span> 
+                    <span class="las la-user-circle"></span> 
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-main">
+            <div class="sidebar-user">
+                <img src="../../Sources/img/rev3.jpg" alt="foto de perfil">
+                <div> 
+                    <h3>Nombre Administrador</h3>
+                    <span></span>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-head">
+                    <span>Dashboard</span>
+                </div>
+                <ul>
+                    <li>
+                        <a href="/Views/adminPage.html" class="active">
+                            <span class="las la-home"></span> 
+                            <span>Inicio</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/Views/perfil.html">
+                            <span class="las la-id-badge"></span> 
+                            <span>Ver Perfil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./admin_usuarios/index.html">
+                            <span class="las la-users-cog"></span> 
+                            <span>Administrar Usuarios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Views/admin_productos/index.html">
+                            <span class="las la-box"></span> 
+                            <span>Gestor de Inventario</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../admin_Indicadores_de_gestión.html">
+                            <span class="las la-chart-line"></span> 
+                            <span>Indicadores de gestión</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Views/userPage.html">
+                            <span class="las la-sign-out-alt"></span> 
+                            <span>Cerrar Sesión</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Contenido principal -->
+
+    <div class="main-content">
+        <header>
+            <div class="menu-toggle">
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+            </div>
+            <div class="header-icons foto-perfil">
+                <span class="las la-search"></span>
+                <span class="las la-bookmark"></span>
+                <span class="las la-sms"></span>
+                <img src="../../Sources/img/rev3.jpg" width="30px" alt="foto de perfil">
+                <div class="info-p">
+                    <h4>Nombre Administrador</h4>
+                    <small>Administrador</small>
+                </div>
+            </div>
+
+        </header>
+
+        <main>
+            <div class="page-header inicio">
+                <div>
+                    <h1>CREAR PRODUCTOS</h1>                    
+                </div>
+            </div>
+            <div class="perfil">
+
+                <div class="profile-container">
+                    <h2>Añadir Producto</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="codigo-producto-formulario">Codigo:</label>
+                            <input type="number" id="codigo-producto-formulario" name="codigo-producto-formulario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre-producto-formulario">Nombre:</label>
+                            <input type="text" id="nombre-producto-formulario" name="nombre-producto-formulario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="precio-producto-formulario">precio:</label>
+                            <input type="number" id="precio-producto-formulario" name="precio-producto-formulario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcion-producto-formulario">descripcion:</label>
+                            <input type="text" id="descripcion-producto-formulario" name="descripcion-producto-formulario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cantidad-producto-formulario">Cantidad disponible:</label>
+                            <input type="number" id="cantidad-producto-formulario" name="cantidad-producto-formulario" required>
+                        </div>
+                        <div class="form-group"> 
+                            <label for="estado-producto-formulario" style="display: block;">Estado</label>
+                            <input type="radio" name="estado-producto-formulario" value="1" id="activo" required>
+                            <label for="activo" style="display:contents;">Activo</label><br>
+                        
+                            <input type="radio" name="estado-producto-formulario" value="2" id="suspendido">
+                            <label for="suspendido" style="display:contents;">Suspendido</label><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="imagen-producto-formulario">Imagen del producto:</label>
+                            <input type="file" id="imagen-producto-formulario" name="imagen-producto-formulario" accept="image/*" >
+                            <img src="  " id="previa" width="400">
+                        </div>
+                        
+                        <button type="submit" id="boton-enviar" class="boton-enviar">Guardar Cambios</button>
+                    </form>
+                </div>     
+            </div>
+        </main>
+    </div>
+    <script src="../../public/js/dashboard.js"></script>
+    <script type="module" src="../../public/js/agregarProductos.js"></script>
+</body>
+</html>

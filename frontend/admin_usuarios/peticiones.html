@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../public/css/dashboard.css">
+    <link rel="stylesheet" href="../../public/css/peticiones.css">
+    <title>Perfil del administrador</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+
+</head>
+
+<body>
+
+    <!-- Sidebar o menu lateral -->
+      <div class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-flex">
+                <img src="../../Sources/img/marca.png" width="30px" alt="logo">
+
+                <div class="brand-icons">
+                    <span class="las la-bell"></span> 
+                    <span class="las la-user-circle"></span> 
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-main">
+            <div class="sidebar-user">
+                <img src="../../Sources/img/rev3.jpg" alt="foto de perfil">
+                <div> 
+                    <h3>Nombre Administrador</h3>
+                    <span></span>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-head">
+                    <span>Dashboard</span>
+                </div>
+                <ul>
+                    <li>
+                        <a href="/Views/adminPage.html" class="active">
+                            <span class="las la-home"></span> 
+                            <span>Inicio</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/Views/perfil.html">
+                            <span class="las la-id-badge"></span> 
+                            <span>Ver Perfil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./index.html">
+                            <span class="las la-users-cog"></span> 
+                            <span>Administrar Usuarios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Views/admin_productos/index.html">
+                            <span class="las la-box"></span> 
+                            <span>Gestor de Inventario</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../admin_Indicadores_de_gestión.html">
+                            <span class="las la-chart-line"></span> 
+                            <span>Indicadores de gestión</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Views/userPage.html">
+                            <span class="las la-sign-out-alt"></span> 
+                            <span>Cerrar Sesión</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+
+    <div class="main-content">
+        <header>
+            <div class="menu-toggle">
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+            </div>
+            <div class="header-icons foto-perfil">
+                <span class="las la-search"></span>
+                <span class="las la-bookmark"></span>
+                <span class="las la-sms"></span>
+                <img src="../../Sources/img/rev3.jpg" width="30px" alt="foto de perfil">
+                <div class="info-p">
+                    <h4>Nombre Administrador</h4>
+                    <small>Administrador</small>
+                </div>
+            </div>
+
+        </header>
+        
+        <main>
+            <section class="solicitudes-container">
+                <h1>Peticiones y solicitudes de usuarios </h1>
+                <div class="upload-section">
+                    <input type="file" id="excelFile" accept=".xlsx, .xls" style="display: none;">
+                    <button onclick="document.getElementById('excelFile').click()">Elegir archivo</button>
+                    <span id="fileName">No se eligió ningún archivo</span>
+                </div>
+
+                <!-- Agregar después del upload-section y antes de las cards -->
+            <div class="filter-section">
+                <h3>Filtrar por tipo de solicitud:</h3>
+                <button class="filter-btn" data-filter="all">Todas las solicitudes</button>
+                <button class="filter-btn" data-filter="personal">Cambio de información personal</button>
+                <button class="filter-btn" data-filter="usuarios">Agregar más usuarios</button>
+                <button class="filter-btn" data-filter="empresa">Cambio información empresa</button>
+            </div>
+
+                <!-- Actualizar la estructura de la tarjeta ejemplo -->
+                    <div class="solicitud-card">
+                        <p class="id">ID: <span></span></p>
+                        <p class="nombre">Nombre completo: <span></span></p>
+                        <p class="documento">Identificación: <span></span></p>
+                        <p class="email">Correo: <span></span></p>
+                        <p class="telefono">Teléfono: <span></span></p>
+                        <p class="tipo-solicitud">Tipo de solicitud: <span></span></p>
+                        <p class="rol">Rol: <span></span></p>
+                        <p class="especificacion">Especificación: <span></span></p>
+                    </div>
+            </section>
+    </main>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"> </script>
+    <script src="../../public/js/dashboard.js"></script>
+    <script src="../../public/js/peticiones.js"></script>
+</body>
+</html>

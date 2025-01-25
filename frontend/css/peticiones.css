@@ -1,0 +1,189 @@
+:root {
+    --color-main: #680045;
+    --color-aprobado: #4caf50;
+    --color-rechazado: #f44336;
+    --color-espera: #ff9800;
+    --color-bg-light: #f4f5f7;
+    --color-text: #333;
+    --color-secondary-text: #666;
+}
+
+body {
+    background-color: var(--color-bg-light);
+}
+
+/* Contenedor principal de la sección de solicitudes */
+.solicitudes-container {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: 'Poppins', sans-serif;
+}
+
+.filter-section {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    background: #0066cc;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.filter-btn:hover {
+    background: #0052a3;
+}
+
+.filter-btn.active {
+    background: #003366;
+}
+
+/* Estilos adicionales para las nuevas tarjetas */
+.solicitud-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.solicitud-card p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.solicitud-card .id {
+    font-weight: bold;
+    color: #333;
+}
+
+.solicitud-card .tipo-solicitud {
+    color: #0066cc;
+    font-weight: bold;
+    margin: 10px 0;
+    padding: 5px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+.solicitudes-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--color-text);
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Sección de carga de archivo */
+.upload-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.upload-section button {
+    background-color: var(--color-main);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.upload-section button:hover {
+    background-color: #0056b3;
+}
+
+.upload-section span {
+    color: var(--color-secondary-text);
+    font-size: 14px;
+}
+
+/* Estilo para las tarjetas de solicitud */
+.solicitud-card {
+    background-color: #fafafa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.solicitud-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.solicitud-card p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--color-secondary-text);
+}
+
+.solicitud-card .nombre {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+/* Estado de la solicitud */
+.estado {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.aprobado .status-dot {
+    background-color: var(--color-aprobado);
+}
+
+.rechazado .status-dot {
+    background-color: var(--color-rechazado);
+}
+
+.espera .status-dot {
+    background-color: var(--color-espera);
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .solicitudes-container {
+        padding: 15px;
+    }
+
+    .solicitud-card {
+        padding: 10px;
+    }
+
+    .nombre {
+        font-size: 16px;
+    }
+
+    .upload-section button {
+        padding: 6px 12px;
+    }
+}

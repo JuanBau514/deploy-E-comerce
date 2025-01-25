@@ -1,0 +1,533 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inaldulces S.A.S</title>
+
+    <link rel="stylesheet" href="./css/mainPage.css"> <!-- CSS -->
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+
+<body>
+    
+<header>
+    <div class="header-top">
+        <div class="logo">
+        <a href="#"><img src="./Sources/img/logo empresa 2.png" alt="Logo"></a>
+        </div>
+        <div class="iconos">
+            <a href="./login.html" class="icon"><i class="bx bx-user"></i></a>
+            <a href="./carrito.html" class="icon"><i class="bx bx-cart"></i></a>
+            <li><a href="#" class="icon" id="logout">Cerrar sesión</a></li>
+
+        </div>
+    </div>
+    
+     <div class="header-bottom">
+            <nav class="navbar">
+                <ul>
+                    <li><a href="./userPage.html">Inicio</a></li>
+                    <li class="dropdown-btn"><a href="#productos">Productos &#9662;</a>
+                        <ul class="dropdown">
+                            <li><a href="#productos">Golosinas</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-btn"><a href="#service">Servicio Técnico &#9662;</a>
+                        <ul class="dropdown">
+                            <li><a href="#acerca">Acerca de</a></li>
+                            <li><a href="#faq">Preguntas Frecuentes</a></li>
+                            <li><a href="#contactanos">Contáctanos</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://forms.office.com/r/56RvPHhKdy">Solicitudes y peticiones </a></li>
+                    <li><a href="#terminos">Terminos y condiciones</a></li>
+                    <div id="seccion-usuario" style="display: none">
+                        <a href="./userPerfil.html" class="icon"> Perfil <i class="bx bx-user"></i></a>                
+                    </div>
+                </ul>
+            </nav>
+        </div>
+</header>
+
+
+<!-- Sección Home -->
+<section class="home" id="home">
+    <div class="text">
+        <h1>¿Buscas <span>comprar</span> dulces al por mayor?</h1>
+        <p><h2 class="txt-conce">Inaldulces S.A.S</h2><br> La mejor empresa de dulces en la ciudad. 
+            <br>Ofrecemos una amplia variedad de productos para todos los gustos.</p>
+        <a href="#productos" class="btn btn-home">Ver Productos</a>
+    </div>
+    <div class="home-image">
+        <img src="../Sources/img/masmelosPrueba.PNG" alt="imagen producto">
+    </div>
+</section>
+
+    <!-- Sección Productos -->
+    <section class="productos" id="productos">
+        <div class="tituloServicios">
+            <span> Productos disponibles  </span>
+            <h2>Explora en toda nuestra variedad de Vehiculos nuevos <br> o usados segun tu conveniencia asi como presupuesto </h2>
+        </div>
+
+        <div class="contenedor-productos">
+            <div class="caja-productos">
+                <div class="img-productos">
+                    <img src="../Sources/img/masmelosPrueba.PNG" alt="">
+                </div>
+                <p>2024</p>
+                <h3>Masmelo 120 Gramos</h3>
+                <h2>$70.000 | La caja de 40 paquetes</h2>
+                <a href="./productospage/producto1.html" class="btn">Compralo ahora</a>
+                <button class="btn-add-to-cart" data-id="1" data-name="Masmelo 120 Gramos Caja de paquetes 40" data-price="70000" data-image="../Sources/img/masmelosPrueba.PNG">Agregar al Carrito</button>
+            </div>
+
+            <div class="caja-productos">
+                <div class="img-productos">
+                    <img src="../Sources/img/masmelosPrueba2.jpg" alt="">
+                </div>
+                <p>2024</p>
+                <h3>Masmelos 100 unidades</h3>
+                <h2>$90.000 | La caja de 10 paquetes </h2>
+                <a href="./productospage/producto2.html" class="btn">Compralo ahora</a>
+                <button class="btn-add-to-cart" data-id="2" data-name="Masmelos 100 unidades Caja de paquetes 10" data-price="90000" data-image="../Sources/img/masmelosPrueba2.jpg">Agregar al Carrito</button>
+            </div>
+
+            <div class="caja-productos">
+                <div class="img-productos">
+                    <img src="../Sources/img/image.png" alt="">
+                </div>
+                <p>2024</p>
+                <h3>Masmelo 120 Gramos</h3>
+                <h2>$70.000 | La caja de 40 paquetes</h2>
+                <a href="./productospage/producto3.html" class="btn">Compralo ahora</a>
+                <button class="btn-add-to-cart" data-id="3" data-name="Masmelos 120 Gramos Caja de paquetes 40 " data-price="70000" data-image="../Sources/img/image.png">Agregar al Carrito</button>
+            </div>
+
+            <div class="caja-productos">
+                <div class="img-productos">
+                    <img src="../Sources/img/image1.png" alt="">
+                </div>
+                <p>2024</p>
+                <h3>Almendras 50 unidades</h3>
+                <h2>$90.000 | La caja de 10 paquetes<span> </h2>
+                <a href="./productospage/producto4.html" class="btn">Compralo ahora</a>
+                <button class="btn-add-to-cart" data-id="4" data-name="Almendras 120 Gramos caja de 10 paquetes" data-price="90000" data-image="../Sources/img/masmelosPrueba2.jpg">Agregar al Carrito</button>
+            </div>
+
+            <div class="caja-productos">
+                <div class="img-productos">
+                    <img src="../Sources/img/CCimage.png" alt="">
+                </div>
+                <p>2024</p>
+                <h3>Masmelo 120 Gramos</h3>
+                <h2>$70.000 | La caja de 40 paquetes </h2>
+                <a href="./productospage/producto5.html" class="btn">Compralo ahora</a>
+                <button class="btn-add-to-cart" data-id="5" data-name="Masmelos 120 Gramos caja de 40 paquetes" data-price="70000" data-image="../Sources/img/marca.png">Agregar al Carrito</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Servicios -->
+<section class="Servicios" id="service">
+    <div class="tituloServicios">
+        <span>Servicios</span>
+        <h2>¿Qué ofrecemos?</h2>
+    </div>
+
+    <div class="contenedor-servicios">
+        <div class="caja-servicio">
+            <i class='bx bx-cart-add'></i>
+            <h3>Compra al por mayor</h3>
+            <p>Ofrecemos precios competitivos y productos de alta calidad. Ideal para tiendas y distribuidores.</p>
+        </div>
+
+        <div class="caja-servicio">
+            <i class='bx bx-package'></i>
+            <h3>Envíos Rápidos</h3>
+            <p>Realizamos envíos a toda la ciudad, garantizando que tus productos lleguen en perfectas condiciones.</p>
+        </div>
+
+        <div class="caja-servicio">
+            <i class='bx bx-support'></i>
+            <h3>Atención al Cliente</h3>
+            <p>Nuestro equipo está disponible para ayudarte en todo momento. ¡Contáctanos para más información!</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- Reseñas -->
+<section class="Reseñas" id="reseñas">
+    <div class="tituloServicios">
+        <span>Reseñas</span>
+        <h2>Experiencias de nuestros clientes</h2>
+    </div>
+
+    <div class="contenedor-reseñas">
+        <div class="caja-reseñas">
+            <div class="img-reseñas">
+                <img src="../Sources/img/rev1.jpg" alt="">
+            </div>
+            <div class="estrellas">
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bx-star'></i>
+            </div>
+            <h3>Carlos Grillo</h3>
+            <p>"Los masmelos son los mejores que he probado, ¡mis clientes están encantados!"</p>
+        </div>
+
+        <div class="caja-reseñas">
+            <div class="img-reseñas">
+                <img src="../Sources/img/rev2.jpg" alt="">
+            </div>
+            <div class="estrellas">
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+            </div>
+            <h3>Pepe Pérez</h3>
+            <p>"Gran calidad y un excelente servicio al cliente. ¡Volveré a comprar!"</p>
+        </div>
+
+        <div class="caja-reseñas">
+            <div class="img-reseñas">
+                <img src="../Sources/img/rev3.jpg" alt="">
+            </div>
+            <div class="estrellas">
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star-half'></i>
+            </div>
+            <h3>Angélica Martínez</h3>
+            <p>"Me encanta la variedad de productos, siempre encuentro lo que busco."</p>
+        </div>
+    </div>
+</section>
+
+<!-- Acerca de -->
+<section class="AcercaDe" id="acerca">
+    <div class="tituloServicios">
+        <br>
+        <br>
+        <span>Acerca de Nosotros</span>
+        <h2>La mejor experiencia en la venta de dulces al por mayor</h2>
+     </div>
+
+    <div class="acerca-contenedor" style="text-align: center;"></div>
+        <div class="acerca-img">
+            <img src="./Sources/img/about.png" alt="">
+        </div>
+        <div class="acerca-text">
+            <div style="text-align: center;">
+                <span><strong><em>20 años de experiencia</em></strong></span>
+            </div>
+            <div style="text-align: center; padding: 30px; background-color: #f5f5f5;">
+                <!-- Título Principal -->
+                <h2 style="font-size: 28px; color: #333; margin-bottom: 25px;">Información de la Empresa</h2>
+            
+                <!-- Sección "¿Quiénes somos?" -->
+                <div style="max-width: 700px; margin: 0 auto; border: 1px solid #d81b60; border-radius: 12px; padding: 25px; background-color: #f9f9f9;">
+                    <h3 style="font-size: 22px; color: #000; margin-bottom: 15px;">¿Quiénes somos?</h3>
+                    <p style="font-size: 16px; color: #333; line-height: 1.8;">
+                        En <strong>Inaldulces S.A.S</strong>, nos dedicamos a ofrecer la mejor calidad en dulces al por mayor. Nuestro equipo está compuesto por personas apasionadas que trabajan cada día para satisfacer las necesidades de nuestros clientes, asegurando un servicio de excelencia.
+                    </p>
+                
+            
+                <div style="background-color: #f5f5f5; padding: 20px; border-radius: 12px; max-width: 400px; margin: 30px auto; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border: 2px solid rgba(0, 0, 0, 0.5);">
+                      <div style="padding: 10px; text-align: center;">
+
+                        <h3 style="font-size: 22px; margin-bottom: 10px; color: #d81b60;">Dueño</h3>
+
+                         <p style="font-size: 18px; line-height: 1.6; color: #333;">Oscar Daniel Ruge Mora</p>
+
+                      </div>
+                    </div>
+                </div>
+                <!-- Contenedores de Fundación, Visión y Misión -->
+                <div class="contenedor-informacion" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 30px;">
+            
+                    <!-- Cuadro de Fundación y Dirección -->
+                    <div class="caja-informacion" style="max-width: 320px; border: 2px solid #ff69b4; border-radius: 12px; padding: 25px; background-color: rgba(255, 182, 193, 0.2); text-align: center;">
+                        <h3 style="font-size: 20px; color: #000; margin-bottom: 15px;">Fundación</h3>
+                        <p style="font-size: 16px; color: #333; line-height: 1.6;">
+                            Inaldulces S.A.S fue fundada el 27 de enero de 2014 por Oscar Daniel Ruge Mora con el objetivo de ofrecer dulces de alta calidad. Desde sus inicios, la empresa ha destacado por su compromiso con la excelencia y la innovación en cada producto.
+                        </p>
+                        <p style="font-size: 16px; color: #333; margin-top: 10px;">
+                            <strong>Dirección:</strong> Cl. 75A Sur #8-60, Bogotá
+                        </p>
+                    </div>
+            
+                    <!-- Cuadro de Visión -->
+                    <div class="caja-informacion" style="max-width: 320px; border: 2px solid #ff69b4; border-radius: 12px; padding: 25px; background-color: rgba(255, 182, 193, 0.2); text-align: center;">
+                        <h3 style="font-size: 20px; color: #000; margin-bottom: 15px;">Visión</h3>
+                        <p style="font-size: 16px; color: #333; line-height: 1.6;">
+                            Endulzar los momentos de las familias.
+                        </p>
+                    </div>
+            
+                    <!-- Cuadro de Misión -->
+                    <div class="caja-informacion" style="max-width: 320px; border: 2px solid #ff69b4; border-radius: 12px; padding: 25px; background-color: rgba(255, 182, 193, 0.2); text-align: center;">
+                        <h3 style="font-size: 20px; color: #000; margin-bottom: 15px;">Misión</h3>
+                        <p style="font-size: 16px; color: #333; line-height: 1.6;">
+                            Elaborar dulces deliciosos e innovadores con calidad y dedicación, contribuyendo a reducir el desempleo en la comunidad.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+                </section>
+            </div>
+                </div>
+            </section>
+            </div>
+
+        </div>
+
+    </div>
+    </section>
+    <br>
+    <!-- Sección Preguntas Frecuentes -->
+    <section class="faq" id="faq">
+        <div class="titulo-servicios">
+            <span class="subtitulo">Preguntas Frecuentes</span>
+            <h2 class="titulo">Respuestas a tus dudas sobre nuestros masmelos</h2>
+        </div>
+    
+        <div class="contenedor-faq">
+            <div class="caja-faq">
+                <h3>¿Cuáles son los ingredientes de los masmelos?</h3>
+                <p>Nuestros masmelos están hechos con ingredientes de alta calidad, incluyendo azúcar, jarabe de maíz, gelatina y saborizantes naturales.</p>
+            </div>
+    
+            <div class="caja-faq">
+                <h3>¿Ofrecen opciones sin azúcar?</h3>
+                <p>Sí, tenemos opciones de masmelos sin azúcar para aquellos que buscan alternativas más saludables.</p>
+            </div>
+    
+            <div class="caja-faq">
+                <h3>¿Realizan envíos a todo el país?</h3>
+                <p>Sí, realizamos envíos a nivel nacional, asegurando que tus productos lleguen en perfectas condiciones.</p>
+            </div>
+    
+            <div class="caja-faq">
+                <h3>¿Puedo hacer un pedido personalizado?</h3>
+                <p>Sí, ofrecemos la opción de pedidos personalizados para eventos especiales. Contáctanos para más detalles.</p>
+            </div>
+        </div>
+    </section>
+    
+    <style>
+        .faq {
+            padding: 2rem;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+    
+        .titulo-servicios {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+    
+        .titulo-servicios .subtitulo {
+            display: block;
+            font-size: 1.2rem;
+            color: #800080;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+    
+        .titulo-servicios .titulo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+    
+        .contenedor-faq {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+    
+        .caja-faq {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        .caja-faq:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+    
+        .caja-faq h3 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #800080;
+        }
+    
+        .caja-faq p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.5;
+        }
+    </style>
+    
+    <br><br><br>
+    <!-- Enlace de WhatsApp -->
+        <section class="whatsapp" id="contactanos">
+        <div class="tituloServicios">
+            <span>Contáctanos</span>
+            <h2>Enlace directo a nuestro WhatsApp</h2>
+        </div>
+    </section>
+        <section id="preguntas-frecuentes">
+        <div class="contenedor-whatsapp" style="text-align: center;">
+            <a href="https://w.app/RgQ3Zd" class="btn btn-whatsapp" style="background-color: #25D366; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-size: 18px;">
+                <i class='bx bxl-whatsapp'></i> Contáctanos por WhatsApp
+            </a>
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+        <!-- Terminos y condiciones -->
+        <section class="terminos" id="terminos">
+            <div class="tituloServicios">
+                <span>Términos y condiciones</span>
+                <h2>Políticas de uso de Inaldulces S.A.S.</h2>
+            </div>
+            <div class="contenedorCartas">
+                <div class="carta">
+                    <h3>1. Información general</h3>
+                    <p>
+                        Inaldulces S.A.S. es una empresa registrada bajo la legislación colombiana como Sociedad por Acciones 
+                        Simplificada (S.A.S.), dedicada a la venta de golosinas, específicamente masmelos y otros productos relacionados.
+                    </p>
+                </div>
+                <div class="carta">
+                    <h3>2. Uso del sitio web</h3>
+                    <p>
+                        El acceso y uso del sitio están reservados para mayores de edad. Está prohibido usar nuestra plataforma 
+                        para actividades ilegales, fraudulentas o que afecten los derechos de la empresa o terceros.
+                    </p>
+                </div>
+                <div class="carta">
+                    <h3>3. Precios y pagos</h3>
+                    <p>
+                        Los precios de nuestros productos están sujetos a cambios sin previo aviso. Los pagos deben realizarse a través de 
+                        los métodos autorizados en el sitio. Asegúrate de revisar los detalles antes de confirmar tu compra.
+                    </p>
+                </div>
+                <div class="carta">
+                    <h3>4. Envíos y devoluciones</h3>
+                    <p>
+                        Ofrecemos envíos a nivel nacional. El tiempo de entrega puede variar dependiendo de la ubicación. Las devoluciones 
+                        solo se aceptarán por productos defectuosos o errores en el envío. Deben ser notificadas dentro de los primeros 7 
+                        días hábiles después de la recepción.
+                    </p>
+                </div>
+                <div class="carta">
+                    <h3>5. Política de privacidad</h3>
+                    <p>
+                        Respetamos tu privacidad y protegemos tus datos personales según la normativa vigente. Para más información, consulta 
+                        nuestra <a href="#politica-privacidad">Política de Privacidad</a>.
+                    </p>
+                </div>
+                <div class="carta">
+                    <h3>6. Propiedad intelectual</h3>
+                    <p>
+                        Todo el contenido del sitio web, incluyendo imágenes, logotipos y textos, es propiedad de Inaldulces S.A.S. 
+                        Está prohibida su reproducción o uso sin autorización previa.
+                    </p>
+                </div>
+                <div class="carta">
+                    <h3>7. Modificaciones</h3>
+                    <p>
+                        Nos reservamos el derecho de modificar estos términos y condiciones en cualquier momento. Los cambios serán 
+                        efectivos una vez publicados en este sitio. Al continuar usando el sitio web, aceptas cumplir con los términos 
+                        y condiciones actualizados.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <style>
+            .terminos {
+                background-color: #333;
+                color: #fff;
+                padding: 20px;
+            }
+            .terminos .tituloServicios {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .terminos .tituloServicios span {
+                font-size: 16px;
+                text-transform: uppercase;
+                display: block;
+                color: #bbb;
+            }
+            .terminos .tituloServicios h2 {
+                font-size: 24px;
+                font-weight: bold;
+                color: #fff;
+            }
+            .contenedorCartas {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+            .carta {
+                background-color: #444;
+                border-radius: 8px;
+                padding: 15px;
+                width: 30%;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            }
+            .carta h3 {
+                font-size: 18px;
+                margin-bottom: 10px;
+                color: #ddd;
+            }
+            .carta p {
+                font-size: 14px;
+                line-height: 1.6;
+                color: #ccc;
+            }
+            .carta a {
+                color: #00bcd4;
+                text-decoration: none;
+            }
+            .carta a:hover {
+                text-decoration: underline;
+            }
+            @media (max-width: 768px) {
+                .carta {
+                    width: 80%;
+                }
+            }
+        </style>
+        
+    
+
+<script src="./js/register.js"></script> <!-- JS -->
+ <!-- JS  ver donde tengo esto xd <script src="src/js/mainResonsive.js"></script> -->
+<script src="./js/cart.js"></script>
+</body>
+</html>

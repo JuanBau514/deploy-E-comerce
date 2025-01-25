@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto E-commerce</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="../css/mainPage.css"> <!-- CSS -->
+    <link rel="stylesheet" href="../css/productoPage.css"> <!-- CSS -->
+</head>
+<body>
+    
+<header>
+    <div class="header-top">
+        <div class="logo">
+            <a href="#"><img src="../../Sources/img/logo empresa 2.png" alt="Logo"></a>
+        </div>
+        <div class="iconos">
+              <a href="../carrito.html" class="icon"><i class="bx bx-cart"></i></a>
+        </div>
+    </div>
+    
+    <div class="header-bottom">
+        <nav class="navbar">
+            <ul>
+                <li><a href="../userPage.html">Inicio</a></li>
+                <li class="dropdown-btn"><a href="../userPage.html #productos">Productos &#9662;</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Subcategoría 1</a></li>
+                        <li><a href="#">Subcategoría 2</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown-btn"><a href="#service">Servicio Técnico &#9662;</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Opción 1</a></li>
+                        <li><a href="#">Opción 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="#colecciones">Colecciones</a></li>
+                <li class="dropdown-btn"><a href="#quienes-somos">Quiénes somos &#9662;</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Historia</a></li>
+                        <li><a href="#">Nuestro Equipo</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://forms.office.com/r/56RvPHhKdy">Solicitudes y peticiones </a></li>
+                <li><a href="#comprar">¿Qué te puedes comprar con $?</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+    
+    <main>
+        <div class="product-container">
+    <div class="product-images">
+        <img src="../../Sources/img/image.png" alt="Masmelos 120 gramos" class="main-image">
+        <div class="thumbnail-images">
+            <img src="../../Sources/img/image.png" alt="Miniatura 1">
+            <img src="../../Sources/img/image.png" alt="Miniatura 2">
+            <img src="../../Sources/img/image.png" alt="Miniatura 3">
+        </div>
+    </div>
+    <div class="product-details">
+        <h2>Masmelo 120 Gramos</h2>
+        <p class="price">$70.000 <span class="discount">(La caja de 40 paquetes)</span></p>
+        <p class="description">
+            Caja de 40 paquetes de masmelos de 120 gramos cada uno. Ideal para fiestas, reuniones familiares o simplemente para disfrutar como snack dulce. Incluye sabores frutales variados.
+        </p>
+        <ul class="product-features">
+            <li>Presentación: Masmelos multicolor con textura esponjosa.</li>
+            <li>Sabores: Fresa, limón, naranja y vainilla.</li>
+            <li>Usos recomendados: Perfecto para meriendas, recetas de postres o para decorar bebidas calientes como chocolate o café.</li>
+        </ul>
+        <div class="purchase-options">
+            <button class="btn-add-to-cart" data-id="5" data-name="Masmelos 120 Gramos caja de 40 paquetes" data-price="70000" data-image="../Sources/img/marca.png">Agregar al Carrito</button>
+            <button id="checkout-button" class="btn-buy-now">Comprar ahora</button>
+        </div>
+    </div>
+</div>
+
+    <section class="productos-relacionados">
+    <h2>Quienes vieron este producto también compraron</h2>
+    <div class="productos-slider">
+        <a href="producto3.html" class="producto">
+            <img src="../../Sources/img/CCimage.png" alt="Masmelo 120 Gramos">
+            <p class="precio">$70.000</p>
+            <p>Masmelo 120 Gramos (Caja de 40 paquetes)</p>
+            <button class="btn-add-to-cart" data-id="3" data-name="Masmelos 120 Gramos Caja de paquetes 40 " data-price="70000" data-image="../Sources/img/image.png">Agregar al Carrito</button>
+        </a>
+        <a href="producto2.html" class="producto">
+            <img src="../../Sources/img/masmelosPrueba2.jpg" alt="Masmelos 100 unidades">
+            <p class="precio">$90.000</p>
+            <p>Masmelos 100 unidades (Caja de 10 paquetes)</p>
+            <button class="btn-add-to-cart" data-id="2" data-name="Masmelos 100 unidades Caja de paquetes 10" data-price="90000" data-image="../Sources/img/masmelosPrueba2.jpg">Agregar al Carrito</button>
+        </a>
+        <a href="producto1.html" class="producto">
+            <img src="../../Sources/img/masmelosPrueba.PNG" alt="Masmelo 120 Gramos">
+            <p class="precio">$70.000</p>
+            <p>Masmelo 120 Gramos (Caja de 40 paquetes)</p>
+            <button class="btn-add-to-cart" data-id="1" data-name="Masmelo 120 Gramos Caja de paquetes 40" data-price="70000" data-image="../Sources/img/512x512.png">Agregar al Carrito</button>
+        </a>
+        <a href="producto4.html" class="producto">
+            <img src="../../Sources/img/image1.png" alt="Masmelos 100 unidades">
+            <p class="precio">$90.000</p>
+            <p>Masmelos 100 unidades (Caja de 10 paquetes)</p>
+            <button class="btn-add-to-cart" data-id="4" data-name="Almendras 120 Gramos caja de 10 paquetes" data-price="90000" data-image="../Sources/img/masmelosPrueba2.jpg">Agregar al Carrito</button>
+        </a>
+    </div>
+</section>
+
+
+    </main>
+       
+    <footer>
+        <p>Copyright © 2024 - Mi E-commerce</p>
+    </footer>
+    <script src="../../public/js/cart.js"></script>
+</body>
+</html>

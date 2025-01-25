@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/dashboard.css">
+    <title>Estudiante Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Sidebar o menu lateral -->
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-flex">
+                <img src="../Sources/img/marca.png" width="30px" alt="logo">
+
+                <div class="brand-icons">
+                    <span class="las la-bell"></span> 
+                    <span class="las la-user-circle"></span> 
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-main">
+            <div class="sidebar-user">
+                <img src="../Sources/img/usuario.png" alt="foto de perfil">
+                <div>
+                    <h3>Administrador</h3>
+                    <span></span>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-head">
+                    <span>Dashboard</span>
+                </div>
+                <ul>
+                    <li>
+                        <a href="/Views/adminPage.html" class="active">
+                            <span class="las la-home"></span> 
+                            <span>Inicio</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/Views/perfil.html">
+                            <span class="las la-id-badge"></span> 
+                            <span>Ver Perfil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./admin_usuarios/index.html">
+                            <span class="las la-users-cog"></span> 
+                            <span>Administrar Usuarios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Views/admin_productos/index.html">
+                            <span class="las la-box"></span> 
+                            <span>Gestor de Inventario</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./admin_Indicadores_de_gestión.html">
+                            <span class="las la-chart-line"></span> 
+                            <span>Indicadores de gestión</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Views/userPage.html">
+                            <span class="las la-sign-out-alt"></span> 
+                            <span>Cerrar Sesión</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+
+    <div class="main-content">
+        <header>
+            <div class="menu-toggle">
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+            </div>
+            <div class="header-icons foto-perfil">
+                <span class="las la-search"></span>
+                <span class="las la-bookmark"></span>
+                <span class="las la-sms"></span>
+                <img src="../Sources/img/user1.png" width="30px" alt="foto de perfil">
+                <div class="info-p">
+                    <h4>User</h4>
+                    <small>Cargo Administrativo</small>
+                </div>
+            </div>
+
+        </header>
+
+        <main>
+            <div class="page-header inicio">
+                <div>
+                    <h1>Inicio</h1>
+                </div>
+            </div>
+            <div class="cards" style="display: flex; text-align: center; align-items: center; flex-direction: column;">
+                <div class="card-single" style=" background: #fff;
+                padding: 2rem; /* Aumenté el padding para que el contenedor sea más grande */
+                box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+                border-radius: 2px;
+                border: 3px solid purple; /* Bordes morados */
+                transform: scale(1.2); /* Aumenta el tamaño proporcionalmente */
+                transition: transform 0.3s ease-in-out;
+                 /* Animación de suavidad */
+                ">
+                    <div class="card-flex">
+                        <div class="card-info">
+                            <div class="card-head">    
+                            </div>
+                            <h2>INALDULCES</h2>
+                            <small>Endulzando los momentos de las familias</small>
+                        </div>
+                        <div class="card-chart danger">                    
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="purple" class="bi bi-person-heart" viewBox="0 0 16 16">
+                                <path d="M9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4m13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276Z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-container">
+                    <div class="info-header">
+                        <h2>Fundacion</h2>
+                    </div>
+                    <div class="info-body">
+                        <p>Inaldulces S.A.S fue fundada el 27 de enero de 2014 por el señor Oscar 
+                            Daniel Ruge Mora con el objetivo de ofrecer 
+                            productos dulces de alta calidad. La empresa 
+                            nació de la pasión por la repostería y el deseo 
+                            de crear dulces únicos y deliciosos que pudieran 
+                            satisfacer los paladares más exigentes. Desde sus inicios, 
+                            Inaldulces ha buscado diferenciarse por su compromiso 
+                            con la excelencia, utilizando ingredientes de primera 
+                            calidad y recetas tradicionales con un toque innovador.</p>
+                    </div>
+                </div>
+
+                <div class="info-container">
+                    <div class="info-header">
+                        <h2>Futuro de la empresa Inaldulces S.A.S </h2>
+                        .
+                    </div>
+                    <div class="info-body">
+                        <p><h3>El futuro de Inaldulces S.A.S se vislumbra prometedor. La empresa tiene planes ambiciosos para los próximos años, incluyendo: </h3>
+                            <ul style="text-align: start;">
+                                <li>- Expansión nacional: Más producción y ventas en mercados nacional clave.</li>
+                                <li>- Diversificación de Productos: Introducción de líneas de productos de diferentes sabores y opciones deliciosas para atender a una clientela más amplia. </li>
+                                <li>- Tecnología e Innovación: Inversión en tecnología avanzada para mejorar la eficiencia en la producción y la gestión de calidad. </li>
+                                <li>- Responsabilidad Social: Continuar con iniciativas de responsabilidad social, apoyando a comunidades locales y promoviendo prácticas sostenibles en toda la cadena de suministro. Inaldulces S.A.S sigue comprometida con su misión de ofrecer dulces de alta calidad y continuar siendo un referente en el sector, siempre adaptándose a las nuevas tendencias y necesidades del mercado.</li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="info-header">
+                        <h2>Misión</h2>
+                    </div>
+                    <div class="info-body">
+                        <p>Elaborar dulces deliciosos e innovadores con calidad y dedicación siendo inspiradores contribuyendo a mejorar la problemática de desempleo de la comunidad.</p>
+                    </div>
+                </div>                
+            </div>
+
+        </main>
+    </div>
+    <script></script>
+    <script src="../public/js/dashboard.js"></script>
+</body>
+</html>

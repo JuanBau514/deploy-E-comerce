@@ -1,0 +1,113 @@
+body {
+    background: url('https://imagenes.eltiempo.com/files/image_1200_600/uploads/2023/05/13/6460609ccaa74.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #333;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.caja-formulario {
+    background: rgba(255, 182, 193, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px; 
+    width: 100%; 
+    margin: 20px;
+}
+
+.encabezado {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.titulo {
+    font-size: 2rem;
+    color: #ff69b4;
+}
+
+.caja-entrada {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.entrada {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.entrada:focus {
+    border-color: #ff69b4;
+}
+
+.boton-enviar {
+    width: 100%;
+    padding: 10px;
+    background: #ff69b4;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 1rem; /* Tamaño de fuente en rem */
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.boton-enviar:hover {
+    background: #ff1493;
+}
+
+.dos-columnas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dos-columnas a {
+    color: #ff69b4;
+    text-decoration: none;
+}
+
+.dos-columnas a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos responsivos */
+@media only screen and (max-width: 768px) {
+    .caja-formulario {
+        width: 90%; /* Ajustar ancho en pantallas más pequeñas */
+        padding: 15px; /* Ajustar espaciado interno */
+    }
+
+    .titulo {
+        font-size: 1.5rem; /* Reducir tamaño del texto */
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .caja-formulario {
+        width: 95%; /* Ampliar en dispositivos muy pequeños */
+        padding: 10px; /* Ajustar espaciado interno */
+    }
+
+    .titulo {
+        font-size: 1.3rem; /* Ajustar tamaño del texto */
+    }
+
+    .entrada {
+        padding: 8px; /* Ajustar espaciado interno de los inputs */
+    }
+
+    .boton-enviar {
+        padding: 8px; /* Ajustar espaciado interno del botón */
+        font-size: 0.9rem; /* Reducir tamaño de fuente del botón */
+    }
+}

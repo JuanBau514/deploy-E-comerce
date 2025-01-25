@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión - Dulces</title>
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+    <div class="contenedor">
+        <div class="caja-formulario">
+            <div class="contenedor-login" id="login">
+                <div class="encabezado">
+                    <span>Para realizar pedidos y compras en la plataforma <a href="./registro.html" onclick="register()">Regístrate</a></span>
+                    <h1 class="titulo">Inicio de Sesión</h1>
+                </div>
+                <div class="caja-entrada">
+                    <input type="text" class="entrada" id="email" placeholder="Nickname o Email">
+                    <i class="bx bx-user"></i>
+                </div>
+                <div class="caja-entrada">
+                    <input type="password" class="entrada" id="password" placeholder="Contraseña">
+                    <i class="bx bx-lock-alt"></i>
+                </div>
+                <div class="caja-entrada">
+                    <input type="checkbox" id="show-password" onclick="togglePasswordVisibility()"> Mostrar Contraseña
+                    <input type="checkbox" id="login-check" onclick="rememberMe()">
+                    <label for="login-check"> Recuérdame</label>
+                </div>
+                <div class="caja-entrada">
+                    <input type="submit" class="boton-enviar" id="boton-enviar" value="Iniciar Sesión">
+                </div>
+                <div class="dos-columnas">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/login.js"></script>
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById('password');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        }
+    </script>
+</body>
+</html>

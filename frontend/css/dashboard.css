@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+:root {
+    --color-main: #680045;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    margin: 0;
+}
+
+.main-content.full-width {
+    margin-left: 0;
+}
+
+
+.sidebar-hidden {
+    display: none;
+}
+
+
+.sidebar {
+    width: 280px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    padding: 1rem 1.5rem;
+    background-color: var(--color-main);
+    color: #fff;
+    overflow-y: auto;
+}
+
+.sidebar-brand {
+    height: 55px;
+}
+
+.brand-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand-icons span {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
+
+.sidebar-user {
+    margin: 1rem 0rem 1rem 0rem;
+    text-align: center;
+}
+
+.sidebar-user img {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    border-left: 2px solid transparent;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    border-top: 2px solid #fff;
+}
+
+.sidebar-user h3 {
+    font-size: 1rem;
+}
+
+.sidebar-user span {
+    font-size: 0.8rem;
+}
+
+.sidebar-menu {
+    margin-top: 0.5rem;
+}
+
+.menu-head {
+    text-transform: uppercase;
+    color: #8da2fb;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+.sidebar ul {
+    margin-bottom: 1rem;
+}
+
+.sidebar li {
+    margin-bottom: 0.4rem;
+}
+
+.sidebar li a {
+    color: #fff;
+    font-size: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar li a span {
+    font-size: 1rem;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+
+header {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f7ffef;
+    padding: 1rem 1.5rem;
+}
+
+.menu-toggle label {
+    height: 60px;
+    width: 60px;
+    display: grid;
+    place-items: center;
+    font-size: 1.5rem;
+    border-radius: 50%;
+}
+
+.header-icons span {
+    display: inline-block;
+    margin-left: .7rem;
+    font-size: 1.4rem;
+}
+
+.header-icons img {
+    display: inline-block;
+    margin-left: .7rem;
+    font-size: 1.4rem;
+}
+
+.info-p {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.menu-toggle label:hover {
+    background: #f1f1f1;
+}
+
+.main-content {
+    margin-left: 280px;
+}
+
+main {
+    padding: 1.5rem;
+    background: #f7ffef;
+    min-height: calc(100vh - 70px);
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 35px 0 0 0;
+}
+
+.header-actions button, .listaProductos__opciones button  {
+    outline: none;
+    color: #fff;
+    background: var(--color-main);
+    border: none;
+    padding: 0.6rem 1rem;
+    margin-left: 1rem;
+    border-radius: 3px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.header-actions button span {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 3rem;
+    margin-top: 2rem;
+}
+
+.card-single {
+    background: #fff;
+    padding: 1rem;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+}
+
+.card-flex {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-head span {
+    display: block;
+    text-transform: uppercase;
+    color: #555;
+    font-size: .5rem;
+}
+
+.card-head small {
+    font-weight: 600;
+    color: #555;
+}
+
+.card-info h2 {
+    font-size: 2.2rem;
+    color: #333;
+}
+
+.card-chart span {
+    font-size: 5rem;
+}
+
+.card-chart.success span {
+    color: seagreen;
+}
+
+.card-chart.warning span {
+    color: #ffbb00;
+}
+
+.card-chart.danger span {
+    color: #ff0000;
+}
+
+.paginacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.paginacion__boton {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.paginacion__paginaActual {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.info-container {
+    background: #fff;
+    border: 2px solid #ddd; /* Borde gris claro */
+    border-radius: 8px; /* Esquinas redondeadas */
+    padding: 1.5rem; /* Espaciado interno */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra */ /* Ancho máximo */
+    
+    transition: transform 0.3s ease; /* Suavidad en transformaciones */
+}
+
+.info-container:hover {
+    transform: scale(1.02); /* Aumenta ligeramente al pasar el cursor */
+}
+
+.info-header {
+    margin-bottom: 1rem; /* Espaciado inferior */
+}
+
+.info-body p {
+    font-size: 1rem; /* Tamaño de texto */
+    color: #333; /* Color del texto */
+    line-height: 1.5; /* Altura de línea para mejor legibilidad */
+}
+
+.info-footer {
+    margin-top: 1.5rem; /* Espaciado superior */
+    text-align: center; /* Centrar el contenido */
+}
+
+.info-button {
+    background: #5a67d8; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Esquinas redondeadas del botón */
+    padding: 0.5rem 1rem; /* Espaciado interno del botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background 0.3s ease; /* Suavidad en el cambio de fondo */
+}
+
+.info-button:hover {
+    background: #434190; /* Color de fondo al pasar el cursor */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .info-container {
+        padding: 1rem; /* Menos padding en pantallas pequeñas */
+    }
+
+    .info-body p {
+        font-size: 0.9rem; /* Tamaño de texto más pequeño en pantallas pequeñas */
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+table tr {
+    border-bottom: 1px solid #dddddd;
+}
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+table tr:last-child {
+    border-bottom: 2px solid #007bff;
+}
+table tr:hover {
+    background-color: #f1f1f1;
+}

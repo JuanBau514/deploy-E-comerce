@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/dashboard.css">
+    <title>Formulario de Empresa</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+</head>
+
+<body>
+    <style>
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 5px;
+        }
+        .btn-submit {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .btn-cancel {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+
+    <div class="main-content">
+        <div class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-flex">
+                    <img src="../../Sources/img/marca.png" width="30px" alt="logo">
+                    <div class="brand-icons">
+                        <span class="las la-bell"></span> 
+                        <span class="las la-user-circle"></span> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-main">
+                <div class="sidebar-user">
+                    <img src="../../Sources/img/rev3.jpg" alt="foto de perfil">
+                    <div> 
+                        <h3>Nombre Administrador</h3>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="sidebar-menu">
+                    <div class="menu-head">
+                        <span>Dashboard</span>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="/Views/adminPage.html" class="active">
+                                <span class="las la-home"></span> 
+                                <span>Inicio</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Views/perfil.html">
+                                <span class="las la-id-badge"></span> 
+                                <span>Ver Perfil</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./index.html">
+                                <span class="las la-users-cog"></span> 
+                                <span>Administrar Usuarios</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Views/admin_productos/index.html">
+                                <span class="las la-box"></span> 
+                                <span>Gestor de Inventario</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../admin_Indicadores_de_gestión.html">
+                                <span class="las la-chart-line"></span> 
+                                <span>Indicadores de gestión</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Views/userPage.html">
+                                <span class="las la-sign-out-alt"></span> 
+                                <span>Cerrar Sesión</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <header>
+            <div class="menu-toggle">
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+            </div>
+            <div class="header-icons foto-perfil">
+                <span class="las la-search"></span>
+                <span class="las la-bookmark"></span>
+                <span class="las la-sms"></span>
+                <img src="../../Sources/img/rev3.jpg" width="30px" alt="foto de perfil">
+                <div class="info-p">
+                    <h4>Nombre Administrador</h4>
+                    <small>Administrador</small>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="page-header inicio">
+                <div>
+                    <h1>Editar Empresa</h1>
+                </div>
+            </div>
+            
+            <form id="empresaForm">
+                <div class="form-group">
+                    <label for="nit">NIT</label>
+                    <input type="number" id="nit" name="nit" required>
+                </div>
+                <div class="form-group">
+                    <label for="razon_social">Razón Social</label>
+                    <input type="text" id="razon_social" name="razon_social" required>
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo</label>
+                    <input type="email" id="correo" name="correo" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono_empresa">Teléfono de la Empresa</label>
+                    <input type="text" id="telefono_empresa" name="telefono_empresa">
+                </div>
+                <div class="form-group">
+                    <label for="id_rubro">Rubro</label>
+                    <select id="id_rubro" name="id_rubro" required>
+                        <!-- Opciones de rubros se cargarán dinámicamente -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cedula_representante_legal">Cédula Representante Legal</label>
+                    <input type="number" id="cedula_representante_legal" name="cedula_representante_legal" required>
+                </div>
+                <div class="form-group">
+                    <label for="nombre_representante">Nombre Representante</label>
+                    <input type="text" id="nombre_representante" name="nombre_representante" required>
+                </div>
+                <div class="form-group">
+                    <label for="apellido_representante">Apellido Representante</label>
+                    <input type="text" id="apellido_representante" name="apellido_representante" required>
+                </div>
+                <button type="submit" class="btn btn-submit">Guardar</button>
+                <button type="button" class="btn btn-cancel" onclick="window.location.href='/Views/empresas_ver.html'">Cancelar</button>
+            </form>
+        </main>
+    </div>
+    <script src="../../public/js/añadirEmpresa.js"></script>
+</body>
+</html>

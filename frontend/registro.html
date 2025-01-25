@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./css/registro.css">
+    <title>Registro</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-box">
+            <div class="contenedor-registro app" id="registro">
+                <form name="fetch">
+                    <div class="tituloR">Regístrate</div>
+                    <div class="encabezado">
+                        <span>¿Ya tienes una cuenta? <a href="./login.html" onclick="login()">Login</a></span>
+                    </div>
+
+                    <div class="caja-entrada">
+                        <label for="tipoUsuario">Seleccione el tipo de registro:</label>
+                        <select id="tipoUsuario" class="entrada" onchange="redireccionarRegistro()">
+                            <option value="">Seleccione</option>
+                            <option value="natural">Persona Natural</option>
+                            <option value="empresa">Empresa</option>
+                        </select>
+                    </div>
+
+                    <!-- Campos para Empresa -->
+                    <div id="camposEmpresa" style="display: none;">
+                        <div class="caja-entrada">
+                            <input type="text" class="entrada" id="razon_social" placeholder="Razón Social">
+                            <i class="bx bx-buildings"></i>
+                        </div>
+                        <div class="caja-entrada">
+                            <input type="text" class="entrada" id="nit" placeholder="NIT">
+                            <i class="bx bx-id-card"></i>
+                        </div>
+                        <div class="caja-entrada">
+                            <input type="text" class="entrada" id="telefono_empresa" placeholder="Teléfono">
+                            <i class="bx bx-phone"></i>
+                        </div>
+                        <div class="caja-entrada">
+                            <input type="email" class="entrada" id="email_empresa" placeholder="Correo Empresa">
+                            <i class="bx bx-envelope"></i>
+                        </div>
+                        <div class="caja-entrada">
+                            <label for="rubro">Seleccione el Rubro</label>
+                            <select id="rubro" class="entrada" name="id_rubro" required>
+                                <!-- Opciones cargadas dinámicamente -->
+                            </select>
+                            <i class="bx bx-store-alt"></i>
+                        </div>
+                        <div class="caja-entrada">
+                            <input type="text" class="entrada" id="nombre_representante" placeholder="Nombres Representante Legal">
+                            <i class="bx bx-user"></i>
+                        </div>
+                        <div class="caja-entrada">
+                            <input type="text" class="entrada" id="apellido_representante" placeholder="Apellidos Representante Legal">
+                            <i class="bx bx-user"></i>
+                        </div>
+                        <div class="caja-entrada">
+                            <input type="text" class="entrada" id="cedula_representante" placeholder="Cédula Representante Legal">
+                            <i class="bx bx-id-card"></i>
+                        </div>
+
+                        <div class="caja-entrada" id="botonesRegistro">
+                            <button type="button" class="boton-enviar" id="boton-empresa" onclick="registrarEmpresa()">Registrarse como Empresa</button>
+                        </div>
+                    </div>
+
+                    <div class="dos-columnas">
+                        <div class="dos">
+                            <label><a href="#">Términos & condiciones</a></label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="./registro.html"></script>
+    <script>
+        function redireccionarRegistro() {
+            const tipoUsuario = document.getElementById("tipoUsuario").value;
+            if (tipoUsuario === "natural") {
+                // Redirige a registrol.html para el registro de personas naturales
+                window.location.href = "./registrol.html";
+            } else if (tipoUsuario === "empresa") {
+                // Muestra el formulario de empresa en la misma página
+                document.getElementById("camposEmpresa").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>

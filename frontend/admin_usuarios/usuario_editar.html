@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../public/css/dashboard.css">
+    <link rel="stylesheet" href="../../public/css/productos.css">
+    <link rel="stylesheet" href="../../public/css/perfil.css">
+    <link rel="stylesheet" href="../../public/css/spinner.css">
+    <title>Editar Usuario</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+
+</head>
+<body>
+
+    <!-- Sidebar o menu lateral -->
+     <div class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-flex">
+                <img src="../../Sources/img/marca.png" width="30px" alt="logo">
+
+                <div class="brand-icons">
+                    <span class="las la-bell"></span> 
+                    <span class="las la-user-circle"></span> 
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-main">
+            <div class="sidebar-user">
+                <img src="../../Sources/img/rev3.jpg" alt="foto de perfil">
+                <div> 
+                    <h3>Nombre Administrador</h3>
+                    <span></span>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-head">
+                    <span>Dashboard</span>
+                </div>
+                <ul>
+                    <li>
+                        <a href="/Views/adminPage.html" class="active">
+                            <span class="las la-home"></span> 
+                            <span>Inicio</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/Views/perfil.html">
+                            <span class="las la-id-badge"></span> 
+                            <span>Ver Perfil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./index.html">
+                            <span class="las la-users-cog"></span> 
+                            <span>Administrar Usuarios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Views/admin_productos/index.html">
+                            <span class="las la-box"></span> 
+                            <span>Gestor de Inventario</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../admin_Indicadores_de_gestión.html">
+                            <span class="las la-chart-line"></span> 
+                            <span>Indicadores de gestión</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Views/userPage.html">
+                            <span class="las la-sign-out-alt"></span> 
+                            <span>Cerrar Sesión</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+     <header>
+            <div class="menu-toggle">
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+            </div>
+            <div class="header-icons foto-perfil">
+                <span class="las la-search"></span>
+                <span class="las la-bookmark"></span>
+                <span class="las la-sms"></span>
+                <img src="../../Sources/img/rev3.jpg" width="30px" alt="foto de perfil">
+                <div class="info-p">
+                    <h4>Nombre Administrador</h4>
+                    <small>Administrador</small>
+                </div>
+            </div>
+
+        </header>
+
+    <div class="main-content">
+        <header>
+            <h1>Editar Usuario</h1>
+        </header>
+        <main>
+            <form id="formEditarUsuario">
+                <input type="hidden" id="usuarioId">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" required>
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" name="correo" required>
+                <label for="genero">Género:</label>
+                <input type="text" id="genero" name="genero" required>
+                <label for="rol">Rol:</label>
+                <input type="text" id="rol" name="rol" required>
+                <label for="nit_empresa">Nit Empresa:</label>
+                <input type="text" id="nit_empresa" name="nit_empresa">
+                <label for="razon_social">Razón Social:</label>
+                <input type="text" id="razon_social" name="razon_social">
+                <button type="submit">Guardar Cambios</button>
+            </form>
+        </main>
+    </div>
+    <script src="/public/js/editarUsuario.js"></script>
+    <script src="../../public/js/dashboard.js"></script>
+</body>
+</html>

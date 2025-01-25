@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./css/registro.css">
+    <title>Registro - Persona Natural</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-box">
+            <div class="contenedor-registro app" id="registro">
+                <form name="fetch">
+                    <div class="tituloR">Registro Persona Natural</div>
+                    <div class="encabezado">
+                        <span>¿Ya tienes una cuenta? <a href="./login.html" onclick="login()">Login</a></span>
+                    </div>
+
+                    <!-- Campos para Persona Natural -->
+                    <div id="camposNatural">
+                        <div class="caja-entrada">
+                            <input type="text" class="entrada" id="nombre" placeholder="Nombres">
+                            <i class="bx bx-user"></i>
+                        </div>
+                        <div class="caja-entrada">
+                            <input type="text" class="entrada" id="apellido" placeholder="Apellidos">
+                            <i class="bx bx-user"></i>
+                        </div>
+                        <div class="caja-entrada">
+                            <input type="email" class="entrada" id="email" placeholder="Correo Electrónico">
+                            <i class="bx bx-envelope"></i>
+                        </div>
+                        <div class="caja-entrada">
+                            <label for="rut">Subir RUT (PDF)</label>
+                            <input type="file" class="entrada" id="rut" accept=".pdf">
+                        </div>
+                        <div class="caja-entrada" id="botonesRegistro">
+                            <button type="button" class="boton-enviar" id="boton-natural" onclick="registrarPersonaNatural()">Registrarse como Persona Natural</button>
+                        </div>
+                        <div class="caja-entrada">
+                            <button type="button" class="boton-enviar" onclick="volverRegistroPrincipal()">Volver al Registro Principal</button>
+                        </div>
+                    </div>
+
+                    <div class="dos-columnas">
+                        <div class="dos">
+                            <label><a href="#">Términos & condiciones</a></label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/register.js"></script>
+
+    <script>
+        function volverRegistroPrincipal() {
+            window.location.href = "./registro.html";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css//userPerfil.css">
+    <link rel="stylesheet" href="../public/css/mainPage.css"> <!-- CSS -->
+    <title>Perfil del Administrador</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+</head>
+
+<body>
+
+    <header>
+    <div class="header-top">
+        <div class="logo">
+            <a href="#"><img src="../Sources/img/logo empresa 2.png" alt="Logo"></a>
+        </div>
+        <div class="iconos">
+          <a href="../Views/carrito.html" class="icon"><i class="bx bx-cart"></i></a>
+        </div>
+    </div>
+    
+    <div class="header-bottom">
+        <nav class="navbar">
+            <ul>
+                <li><a href="./userPage.html">Inicio</a></li>
+                <li class="dropdown-btn"><a href="#productos">Productos &#9662;</a>
+                    <ul class="dropdown">
+                        <li><a href="#productos">Golosinas</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown-btn"><a href="#service">Servicio Técnico &#9662;</a>
+                    <ul class="dropdown">
+                        <li><a href="#acerca">Acerca de</a></li>
+                        <li><a href="#faq">Preguntas Frecuentes</a></li>
+                        <li><a href="#contactanos">Contáctanos</a></li>
+                        
+                    </ul>
+                </li>
+                
+                <li><a href="https://forms.office.com/r/56RvPHhKdy">Solicitudes y peticiones </a></li>
+                <li><a href="#terminos">Terminos y condiciones</a></li>
+
+                <div id="seccion-usuario" style="display: none">
+                    <a href="./userPerfil.html" class="icon"> Perfil <i class="bx bx-user"></i></a>                
+                </div>
+
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="main-content">
+        <section class="page-header">
+            <h1>Perfil</h1>
+        </section>
+
+        <section class="profile-section">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Información de la Sesión</h2>
+                </div>
+                <div class="card-body">
+                    <p><i class="bx bx-id-card"></i> <strong>Cédula: </strong>  <span id="profile-cedula"></span></p>
+                    <p><i class="bx bx-user"></i> <strong>Nombre:</strong> <span id="profile-name"></span></p>
+                    <p><i class="bx bx-user"></i> <strong>Apellido:</strong> <span id="profile-lastName"></span></p>
+                    <p><i class="bx bx-envelope"></i> <strong>Correo:</strong> <span id="profile-email"></span></p>
+                    <p><i class="bx bx-phone"></i> <strong>Teléfono:</strong> <span id="profile-phone"></span></p>
+                    <p><i class="bx bx-male-female"></i> <strong>Género:</strong> <span id="profile-gender"></span></p>
+                    <p><i class="bx bx-user-circle"></i> <strong>Rol:</strong> <span id="profile-role"></span></p>
+                    <p><i class="bx bx-building"></i> <strong>NIT Empresa:</strong> <span id="profile-nit"></span></p>
+                </div>
+            </div>
+        </section>
+
+         <section class="session-timer-section">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Tiempo de Sesión</h2>
+                </div>
+                <div class="card-body">
+                    <p><i class="bx bx-time"></i> <strong>Tiempo de Actividad en la plataforma: </strong> <span id="session-timer">00:00:00</span></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+    <script src="../public/js/userperfil.js"></script>
+
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/dashboard.css">
+    <title>Estudiante Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+
+</head>
+
+<body>
+
+    <!-- Sidebar o menu lateral -->
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-flex">
+                <img src="../../Sources/img/marca.png" width="30px" alt="logo">
+
+                <div class="brand-icons">
+                    <span class="las la-bell"></span> 
+                    <span class="las la-user-circle"></span> 
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-main">
+            <div class="sidebar-user">
+                <img src="../../Sources/img/rev3.jpg" alt="foto de perfil">
+                <div> 
+                    <h3>Nombre Administrador</h3>
+                    <span></span>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-head">
+                    <span>Dashboard</span>
+                </div>
+                <ul>
+                    <li>
+                        <a href="/Views/adminPage.html" class="active">
+                            <span class="las la-home"></span> 
+                            <span>Inicio</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/Views/perfil.html">
+                            <span class="las la-id-badge"></span> 
+                            <span>Ver Perfil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./admin_usuarios/index.html">
+                            <span class="las la-users-cog"></span> 
+                            <span>Administrar Usuarios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Views/admin_productos/index.html">
+                            <span class="las la-box"></span> 
+                            <span>Gestor de Inventario</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../admin_Indicadores_de_gestión.html">
+                            <span class="las la-chart-line"></span> 
+                            <span>Indicadores de gestión</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Views/userPage.html">
+                            <span class="las la-sign-out-alt"></span> 
+                            <span>Cerrar Sesión</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Contenido principal -->
+
+    <div class="main-content">
+        <header>
+            <div class="menu-toggle">
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+            </div>
+            <div class="header-icons foto-perfil">
+                <span class="las la-search"></span>
+                <span class="las la-bookmark"></span>
+                <span class="las la-sms"></span>
+                <img src="../../Sources/img/rev3.jpg" width="30px" alt="foto de perfil">
+                <div class="info-p">
+                    <h4>Nombre Administrador</h4>
+                    <small>Administrador</small>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="page-header inicio">
+                <div>
+                    <h1>GESTION DE USUARIOS</h1>
+                </div>
+            </div>
+            <div class="cards botonesOpciones">
+                <a class="card-single ver_usuarios" href="./usuarios_ver.html">        
+                    <div class="card-flex">
+                        <div class="card-info">
+                            <div class="card-head">
+                                <h3>VER USUARIOS</h3>                                
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+
+                <a class="card-single crear_usuarios" href="./añadirAdmin.html">        
+                    <div class="card-flex">
+                        <div class="card-info">
+                            <div class="card-head">
+                                <h3>CREAR USUARIOS</h3>                                
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="card-single editar_usuarios" href="./peticiones.html">        
+                    <div class="card-flex">
+                        <div class="card-info">
+                            <div class="card-head">
+                                <h3>PETICIONES</h3>                                
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                 <a class="card-single editar_usuarios" href="./empresas_ver.html">        
+                    <div class="card-flex">
+                        <div class="card-info">
+                            <div class="card-head">
+                                <h3>VER EMPRESAS</h3>                                
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                 <a class="card-single editar_usuarios" href="#">        
+                    <div class="card-flex">
+                        <div class="card-info">
+                            <div class="card-head">
+                                <h3>CREAR EMPRESAS</h3>                                
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </main>
+    </div>
+    <script src="../../public/js/dashboard.js"></script>
+</body>
+</html>
