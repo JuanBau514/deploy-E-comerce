@@ -70,7 +70,7 @@ const agregarUsuariosTabla = (usuarios) => {
         button.addEventListener('click', (e) => {
             const id = e.target.getAttribute('data-id');
             // Redirigir a una página de edición con el ID del usuario
-            window.location.href = `/admin_usuarios/usuario_editar.html?id=${id}`;
+            window.location.href = `/usuario_editar.html?id=${id}`;
         });
     });
 }
@@ -137,13 +137,13 @@ window.onload = function() {
                         button.addEventListener('click', (e) => {
                             const id = e.target.getAttribute('data-id');
                             // Redirigir a una página de edición con el ID del usuario
-                            window.location.href = `/admin_usuarios/editarUsuario.html?id=${id}`;
+                            window.location.href = `/editarUsuario.html?id=${id}`;
                         });
                     });
 
                 } else {
                     alert("usuario NO encontrado");
-                    window.location.href = '/admin_usuarios/usuarios_ver.html';
+                    window.location.href = '/usuarios_ver.html';
                 }
 
             });
