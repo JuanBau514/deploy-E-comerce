@@ -1,11 +1,14 @@
 import { defineConfig } from 'vite';
-import path from 'path';
 
 export default defineConfig({
-  root: path.resolve(__dirname, 'frontend'),
+  root: 'frontend', // La raíz del proyecto
+  base: './', // Rutas relativas en producción
   build: {
-    outDir: path.resolve(__dirname, 'dist'),
-    emptyOutDir: true,
+    outDir: '../dist', // Carpeta de salida
+    emptyOutDir: true, // Limpia 'dist' antes de compilar
+    rollupOptions: {
+      input: './frontend/public/userPage.html' // Especifica userPage.html como el archivo de entrada
+    }
   },
-  assetsInclude: ['**/*.html'], // Agrega esta línea para incluir archivos HTML como activos
+  publicDir: 'public', // Carpeta para archivos estáticos
 });

@@ -28,13 +28,13 @@ async function cargarEmpresas() {
 }
 
 async function agregarEmpresa() {
-    window.location.href = './admin_usuarios/empresañadir.html';
+    window.location.href = '/empresañadir.html';
 }
 
 async function editarEmpresa(nit) {
     // Lógica para editar una empresa
     alert('Editar empresa con NIT: ' + nit);
-    window.location.href = './admin_usuarios/empresas_editar.html';
+    window.location.href = '/empresas_editar.html';
 }
 
 async function eliminarEmpresa(nit) {
