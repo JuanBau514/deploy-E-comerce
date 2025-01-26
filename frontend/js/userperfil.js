@@ -61,7 +61,7 @@ function iniciarTemporizador() {
         alert('Tu sesión ha expirado por inactividad.');
         localStorage.removeItem('cedula');
         localStorage.removeItem('sesionIniciada');
-        window.location.href = '/Views/login.html';
+        window.location.href = './login.html';
     }
 
     document.addEventListener('mousemove', resetearTemporizador);

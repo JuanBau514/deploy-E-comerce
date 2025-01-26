@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('razon_social').value = usuario.razon_social;
         } else {
             alert('Usuario no encontrado');
-            window.location.href = '/Views/admin_usuarios/usuarios_ver.html';
+            window.location.href = './admin_usuarios/usuarios_ver.html';
         }
     }
 
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         if (response.ok) {
             alert('Usuario actualizado con éxito');
-            window.location.href = '/Views/admin_usuarios/usuarios_ver.html';
+            window.location.href = './admin_usuarios/usuarios_ver.html';
         } else {
             alert('Error al actualizar el usuario');
         }

@@ -22,7 +22,7 @@ window.onload = async function(){
         const url_imagen = (previa.src === "" || previa.src === null || previa.src === undefined) ? "" : previa.src;
 
                     alert('producto creado')
-            window.location.href = "/Views/admin_productos/productos_ver.html"
+            window.location.href = "./admin_productos/productos_ver.html"
 
         await fetch('http://localhost:3000/api/users/productos',{
             method:"POST",

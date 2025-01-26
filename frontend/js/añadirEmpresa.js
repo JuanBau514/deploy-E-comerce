@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             if (response.ok) {
                 alert('Empresa registrada con éxito');
-                window.location.href = '/Views/empresas_ver.html';
+                window.location.href = './empresas_ver.html';
             } else {
                 const errorData = await response.json();
                 alert(`Error: ${errorData.message}`);

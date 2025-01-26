@@ -1,11 +1,10 @@
-// filepath: /home/juanpbau/Proyectos/js/deploy-comercio/inaldulce_comercio/backend/server.js
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import userRoutes from './Routes/userRuta.js';
-import empresaRoutes from './Routes/userRuta.js'; // Asegúrate de importar todas las rutas necesarias
+import empresaRoutes from './Routes/userRuta.js'; 
 
 const app = express();
 const port = 3000;
@@ -15,7 +14,7 @@ const __dirname = path.dirname(__filename);
 
 // Configuración de CORS
 const corsOptions = {
-    origin: 'http://localhost:3000',  // Permitir el origen específico
+    origin: ['http://localhost:3000', 'http://localhost:5173'],  // Permitir los orígenes específicos
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
     optionsSuccessStatus: 200

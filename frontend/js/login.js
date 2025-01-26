@@ -28,9 +28,9 @@ document.querySelector('.boton-enviar').addEventListener('click', async function
 
                     // Verifica el rol del usuario
                     if (result.role === 1) {  // Asegúrate de que este es el rol de Administrador
-                        window.location.href = '/Views/adminPage.html';
+                        window.location.href = 'adminPage.html';
                     } else {
-                        window.location.href = '/Views/userPage.html';
+                        window.location.href = 'userPage.html';
                     }
                 } else {
                     alert('Error en el inicio de sesión: ' + result.message);

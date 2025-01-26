@@ -14,7 +14,7 @@ function mostrarCampos() {
             // Mostrar la sección de usuario si hay una sesión iniciada
             document.getElementById('seccion-usuario').style.display = 'block';
             // Ocultar el enlace de login
-            const loginLink = document.querySelector('a[href="../Views/login.html"]');
+            const loginLink = document.querySelector('a[href="./login.html"]');
             if (loginLink) {
                 loginLink.style.display = 'none';
             }
@@ -122,9 +122,9 @@ async function registrarPersonaNatural() {
 
         const data = await response.json();
         alert("Registro exitoso. Hemos enviado un correo para validar tu informacion, pronto te contactaremos y te enviaremos credenciales para el registro.");
-        window.location.href = '/Views/userPage.html';
+        window.location.href = '/userPage.html';
     } finally{
-         window.location.href = '/Views/userPage.html';
+         window.location.href = '/userPage.html';
     }
 }
 
@@ -153,7 +153,7 @@ async function registrarEmpresa() {
 
         if (response.status === 200) {
             alert("Registro de empresa exitoso.");
-            window.location.href = '/Views/userPage.html';
+            window.location.href = '/userPage.html';
         } else {
             const errorData = await response.json();
             throw new Error(errorData.message || 'Error en el servidor');

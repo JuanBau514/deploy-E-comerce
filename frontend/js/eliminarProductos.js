@@ -24,7 +24,7 @@ const creaFila = (codigo_producto, nombre, precio, cantidad, descripcion) => {
         body: JSON.stringify({ codigo_producto })
        }).then((response)=>{
         alert('producto eliminado correctamente')
-        window.location.href = '/Views/admin_productos/productos_eliminar.html';
+        window.location.href = './admin_productos/productos_eliminar.html';
        }).catch((error)=>{
         alert('Hubo un error')
        })
