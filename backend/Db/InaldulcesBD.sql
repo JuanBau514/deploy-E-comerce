@@ -1,4 +1,3 @@
-DROP DATABASE inaldulces;
 CREATE DATABASE inaldulces;
 
 USE inaldulces;
