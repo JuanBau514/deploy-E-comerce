@@ -1,7 +1,7 @@
 // Función para cargar roles desde la API
 async function cargarRoles() {
     try {
-        const response = await fetch('http://localhost:3000/api/users/roles');
+        const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/roles');
         const data = await response.json();
         
         if (data.success) {
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         try {
-            const response = await fetch('http://localhost:3000/api/users/createAdmin', {
+            const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/createAdmin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (response.ok) {
                 alert('Usuario creado exitosamente');
                 form.reset();
-                window.location.href = 'admin_usuarios/usuarios_ver.html'; 
+                window.location.href = '/usuarios_ver.html'; 
             } else {
                 alert(data.message || 'Error al crear usuario');
             }

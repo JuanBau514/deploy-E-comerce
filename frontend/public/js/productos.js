@@ -57,7 +57,7 @@ function crearProducto(codigo_producto, nombre,descripcion,precio,cantidad_dispo
      y así guardarlo en el servidor para mayor seguridad
     */
     editarBtn.onclick = async function () {        
-        await fetch('http://localhost:3000/api/users/establecerProductoParaEdicion',{
+        await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/establecerProductoParaEdicion',{
             method:'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ codigo_producto })
@@ -91,7 +91,7 @@ window.onload = async function() {
         
 
        
-        const response = await fetch('http://localhost:3000/api/users/productos')
+        const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/productos')
         const productos = response.json()
 
         

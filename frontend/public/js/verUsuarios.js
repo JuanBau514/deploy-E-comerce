@@ -46,7 +46,7 @@ const agregarUsuariosTabla = (usuarios) => {
         button.addEventListener('click', async (e) => {
             const id = e.target.getAttribute('data-id');
             try {
-                const response = await fetch(`http://localhost:3000/api/users/usuarios/${id}`, {
+                const response = await fetch(`https://deploy-e-comerce-production.up.railway.app/api/users/usuarios/${id}`, {
                     method: 'DELETE'
                 });
                 if (response.ok) {
@@ -76,7 +76,7 @@ const agregarUsuariosTabla = (usuarios) => {
 }
 
 window.onload = function() {
-    fetch('http://localhost:3000/api/users/usuarios', {
+    fetch('${API_URL}/users/usuarios', {
         method: 'GET'
     }).then((data) => {
         data.json().then((usuarios) => {
@@ -116,7 +116,7 @@ window.onload = function() {
                             const id = e.target.getAttribute('data-id');
                             console.log(id);
                             try {
-                                const response = await fetch(`http://localhost:3000/api/users/usuarios/${id}`, {
+                                const response = await fetch(`https://deploy-e-comerce-production.up.railway.app/api/users/usuarios/${id}`, {
                                     method: 'DELETE'
                                 });
                                 if (response.ok) {

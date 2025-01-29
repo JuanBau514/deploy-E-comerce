@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', cargarRubros);
 
 async function cargarRubros() {
     try {
-        const response = await fetch('http://127.0.0.1:3000/api/users/rubros');
+        const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api//users/rubros');
         const rubros = await response.json();
         const rubrosArray = rubros[0];
 
@@ -109,7 +109,7 @@ async function registrarPersonaNatural() {
     formData.append('rut', rutFile);
 
        try {
-        const response = await fetch("http://localhost:3000/api/users/registrarPersonaNatural", {
+        const response = await fetch("https://deploy-e-comerce-production.up.railway.app/api/users/registrarPersonaNatural", {
             method: "POST",
             mode: 'cors',
             body: formData
@@ -143,7 +143,7 @@ async function registrarEmpresa() {
     };
 
     try {
-        const response = await fetch("http://localhost:3000/api/users/enviar-correo", {
+        const response = await fetch("https://deploy-e-comerce-production.up.railway.app/api/users/enviar-correo", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

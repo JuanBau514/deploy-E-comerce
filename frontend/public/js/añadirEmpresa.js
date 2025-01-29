@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Cargar rubros
     try {
-        const response = await fetch('http://localhost:3000/api/rubros');
+        const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api/rubros');
         const data = await response.json();
         data.data.forEach(rubro => {
             const option = document.createElement('option');
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         };
 
         try {
-            const response = await fetch('http://localhost:3000/api/empresas', {
+            const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api/empresas', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

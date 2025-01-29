@@ -8,7 +8,7 @@ function cargarPerfil() {
 
     console.log('Cédula obtenida del local storage:', cedula); // Log para depuración
 
-    fetch(`http://localhost:3000/api/users/usuarios/${cedula}`)
+    fetch(`https://deploy-e-comerce-production.up.railway.app/api/users/usuarios/${cedula}`)
         .then(response => response.json())
         .then(data => {
             console.log('Respuesta de la API:', data); // Log para depuración

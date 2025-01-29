@@ -18,7 +18,7 @@ const creaFila = (codigo_producto, nombre, precio, cantidad, descripcion) => {
     const eliminarBtn = document.createElement('button');
     eliminarBtn.textContent = 'Eliminar';
     eliminarBtn.addEventListener('click', async () => {
-       await fetch('http://localhost:3000/api/users/productos',{
+       await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/productos',{
         method:'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ codigo_producto })
@@ -54,7 +54,7 @@ const agregarProductoTabla = (productos) => {
 
 window.onload = async function() {
     try {    
-        const response = await fetch('http://localhost:3000/api/users/productos');
+        const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/productos');
         const productos = await response.json();
         agregarProductoTabla(productos[0]);
 

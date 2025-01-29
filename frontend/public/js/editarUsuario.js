@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const usuarioId = urlParams.get('id');
 
     if (usuarioId) {
-        const response = await fetch(`http://localhost:3000/api/users/usuarios/${usuarioId}`);
+        const response = await fetch(`https://deploy-e-comerce-production.up.railway.app/api/users/usuarios/${usuarioId}`);
         const data = await response.json();
 
         if (data.success) {
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('razon_social').value = usuario.razon_social;
         } else {
             alert('Usuario no encontrado');
-            window.location.href = 'admin_usuarios/usuarios_ver.html';
+            window.location.href = '/usuarios_ver.html';
         }
     }
 
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const nit_empresa = document.getElementById('nit_empresa').value;
         const razon_social = document.getElementById('razon_social').value;
 
-        const response = await fetch(`http://localhost:3000/api/users/usuarios/${usuarioId}`, {
+        const response = await fetch(`https://deploy-e-comerce-production.up.railway.app/api/users/usuarios/${usuarioId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         if (response.ok) {
             alert('Usuario actualizado con éxito');
-            window.location.href = 'admin_usuarios/usuarios_ver.html';
+            window.location.href = '/usuarios_ver.html';
         } else {
             alert('Error al actualizar el usuario');
         }

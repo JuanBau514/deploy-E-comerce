@@ -15,7 +15,7 @@ const ponerInformacion = async (cedula) => {
             throw new Error('Cédula no proporcionada');
         }
 
-        const response = await fetch(`http://localhost:3000/api/users/usuarios/${cedula}`);
+        const response = await fetch(`https://deploy-e-comerce-production.up.railway.app/api/users/usuarios/${cedula}`);
         
         if (response.status === 404) {
             throw new Error('Usuario no encontrado');
@@ -98,7 +98,7 @@ window.onload = function() {
 
         console.log('Enviando datos:', userData);
 
-        const response = await fetch('http://localhost:3000/api/users/usuarios', {
+        const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/usuarios', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

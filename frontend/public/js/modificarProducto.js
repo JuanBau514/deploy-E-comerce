@@ -20,7 +20,7 @@ const campoImagen = document.getElementById('imagen-producto-formulario');
 const previa = document.querySelector('#previa');
 
 window.onload = async function() {
-    const producto = await fetch('http://localhost:3000/api/users/productoUnidad');
+    const producto = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/productoUnidad');
     producto.json().then((producto) => {
         productoCodigo.textContent = producto.codigo_producto;
         productoNombre.textContent = producto.nombre;
@@ -56,7 +56,7 @@ window.onload = async function() {
         // Obtener el valor del estado seleccionado
         const id_estado = [...camposEstado].find(radio => radio.checked)?.value || "1"; // Por defecto 'activo'
 
-        fetch('http://localhost:3000/api/users/productos', {
+        fetch('https://deploy-e-comerce-production.up.railway.app/api/users/productos', {
             method: "PUT",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

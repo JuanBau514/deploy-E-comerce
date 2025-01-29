@@ -24,7 +24,7 @@ window.onload = async function(){
                     alert('producto creado')
             window.location.href = "./admin_productos/productos_ver.html"
 
-        await fetch('http://localhost:3000/api/users/productos',{
+        await fetch('https://deploy-e-comerce-production.up.railway.app/api//users/productos',{
             method:"POST",
             headers: { 'Content-Type': 'application/json' },
             

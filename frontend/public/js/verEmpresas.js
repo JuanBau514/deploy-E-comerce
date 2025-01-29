@@ -1,6 +1,6 @@
 async function cargarEmpresas() {
     try {
-        const response = await fetch('http://localhost:3000/api/users/empresas');
+        const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/empresas');
         const data = await response.json();
         const tbody = document.querySelector('#tabla_empresas tbody');
         tbody.innerHTML = '';
@@ -40,7 +40,7 @@ async function editarEmpresa(nit) {
 async function eliminarEmpresa(nit) {
     if (confirm('¿Estás seguro de que deseas eliminar esta empresa?')) {
         try {
-            const response = await fetch(`http://localhost:3000/api/empresas/${nit}`, {
+            const response = await fetch(`https://deploy-e-comerce-production.up.railway.app/api/empresas/${nit}`, {
                 method: 'DELETE'
             });
 

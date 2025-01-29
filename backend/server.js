@@ -6,20 +6,24 @@ import userRoutes from './Routes/userRuta.js';
 import empresaRoutes from './Routes/userRuta.js'; 
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Configuración de CORS
 const corsOptions = {
-    origin: ['http://localhost:3000', 'http://localhost:5173', 'https://deploy-e-comerce-production.up.railway.app'],  // Permitir los orígenes específicos
+    origin: [
+        'http://localhost:3000',
+        'http://localhost:5173',
+        'http://localhost:8080',
+        'https://deploy-e-comerce-production.up.railway.app'
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
+    credentials: true,
     optionsSuccessStatus: 200
 };
 
-// Aplicar CORS antes de las rutas
 app.use(cors(corsOptions));
 
 // Middleware para analizar JSON y datos de formularios
