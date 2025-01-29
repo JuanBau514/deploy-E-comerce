@@ -143,7 +143,7 @@ window.onload = function() {
 
                 } else {
                     alert("usuario NO encontrado");
-                    window.location.href = '/usuarios_ver.html';
+                    window.location.href = 'admin_usuarios/usuarios_ver.html';
                 }
 
             });
