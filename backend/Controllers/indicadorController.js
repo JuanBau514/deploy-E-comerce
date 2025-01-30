@@ -3,8 +3,6 @@ const Indicador = require('../Models/modeloIndicador')
 
 const obtnerInformacion = async (req,res) =>{
     try {
-        const {mes,annio} = req.body;
-
         const resultado = await Indicador.realizarConsulta();
         console.log(resultado)
         res.status(200).json(resultado);
@@ -16,7 +14,7 @@ const obtnerInformacion = async (req,res) =>{
 }
 
 const obtenerReporte = async (req,res)=>{
-   const {mes,annio} = req.body;
+  const {mes,annio} = req.body;
   try{
     const resultado = await Indicador.realizarReporte(mes,annio);
     console.log(resultado)
