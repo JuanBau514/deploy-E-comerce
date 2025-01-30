@@ -7,10 +7,10 @@ const boton_generar_reporte = document.querySelector('.boton_generarReporte');
 const exportar_reporte = document.querySelector('.exportarReporte');
 
 
-panel_cantidad_administradores.textContent = '';
-panel_cantidad_clientes.textContent = '';
-panel_cantidad_inventarios.textContent = '';
-panel_cantidad_pedidos.textContent = '';
+panel_cantidad_administradores.textContent = 'Prueba';
+panel_cantidad_clientes.textContent = 'Prueba';
+panel_cantidad_inventarios.textContent = 'Prueba';
+panel_cantidad_pedidos.textContent = 'Prueba';
 
 
 boton_generar_reporte.addEventListener('click',(e)=>{
