@@ -26,4 +26,11 @@ const obtenerReporte = async (req,res)=>{
        
 }
 
+export default {
+    obtenerInformacion,
+    obtenerReporte
+}
+
+
+
 
