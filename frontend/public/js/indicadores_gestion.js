@@ -15,12 +15,13 @@ panel_cantidad_administradores.textContent = 'Prueba';
 const agregar_datos = async ()=>{
   try{
      const informacion = await fetch('/indicadorGeneral');   
+    console.log(informacion);
   }
   catch(error){
     console.log(error);
   }
  
-  console.log(informacion);
+  
 }
 
 agregar_datos();
