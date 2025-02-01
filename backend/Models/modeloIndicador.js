@@ -1,4 +1,4 @@
-import db from './conection';
+import db from './conection.js';
 
 
 class Indicador{
