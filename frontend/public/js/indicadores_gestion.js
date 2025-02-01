@@ -16,7 +16,9 @@ const agregar_datos = async ()=>{
   try{
      const respuesta = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/indicadorGeneral');   
      const informacion.json();
-    console.log(informacion);
+    informacion.then((data)=>{
+      console.log(data);
+    })
   }
   catch(error){
     console.log(error);
