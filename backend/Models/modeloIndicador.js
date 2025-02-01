@@ -30,6 +30,27 @@ class Indicador{
 
         return resultados;
     }
+
+    static async realizarReporte (mes,annio)
+    {
+        const consultas = 
+        {
+            "Cantidad_usuarios": "Select count(*) from usuario",
+            "Gente": "SELECT * FROM usuario",
+            "cantidad_productos": "Select count(*) from producto",
+            "productos": "Select * from producto",
+        }
+
+        const resultados = {}
+
+        for( const consulta in consultas){
+             resultados.consulta = await db.query(consultas[consulta]);
+            console.log(`Resultado de la consulta ${resultado.consulta}`)
+        }
+
+        return resultados;
+    }
+    
 }
 
 module.exports = Indicador;
