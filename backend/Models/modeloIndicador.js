@@ -52,5 +52,5 @@ class Indicador{
     }
     
 }
-
+//
 export.default Indicador;
