@@ -1,4 +1,4 @@
-const db = require('./conection');
+import db from './conection';
 
 
 class Indicador{
