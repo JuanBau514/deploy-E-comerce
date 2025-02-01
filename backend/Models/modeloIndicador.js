@@ -53,4 +53,4 @@ class Indicador{
     
 }
 
-module.exports = Indicador;
+export.default Indicador;
