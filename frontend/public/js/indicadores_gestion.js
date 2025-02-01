@@ -14,8 +14,9 @@ panel_cantidad_administradores.textContent = 'Prueba';
 
 const agregar_datos = async ()=>{
   try{
-     const informacion = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/indicadorGeneral');   
-    console.log(informacion.json());
+     const respuesta = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/indicadorGeneral');   
+     const informacion.json();
+    console.log(informacion);
   }
   catch(error){
     console.log(error);
