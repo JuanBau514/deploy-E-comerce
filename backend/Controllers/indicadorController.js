@@ -1,4 +1,4 @@
-import  Indicador from '../Models/modeloIndicador';
+import  Indicador from '../Models/modeloIndicador.js';
 
 const obtnerInformacion = async (req,res) =>{
     try {
