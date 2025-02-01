@@ -1,6 +1,6 @@
 import  Indicador from '../Models/modeloIndicador.js';
 
-const obtnerInformacion = async (req,res) =>{
+async function obtnerInformacion (req,res) =>{
     try {
         const resultado = await Indicador.realizarConsulta();
         console.log(resultado)
@@ -26,7 +26,7 @@ const obtenerReporte = async (req,res)=>{
 }
 
 export default {
-    obtenerInformacion,
+    obtnerInformacion,
     obtenerReporte
 }
 
