@@ -13,9 +13,17 @@ panel_cantidad_administradores.textContent = 'Prueba';
   panel_cantidad_pedidos.textContent = 'Prueba'; 
 
 const agregar_datos = async ()=>{
- const informacion = await fetch('/indicadorEspecifico');
-
+  try{
+     const informacion = await fetch('/indicadorGeneral');   
+  }
+  catch(error){
+    console.log(error);
+  }
+ 
+  console.log(informacion);
 }
+
+agregar_datos();
 
 boton_generar_reporte.addEventListener('click',(e)=>{
         const month = document.getElementById('monthSelector').value;
