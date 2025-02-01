@@ -1,5 +1,4 @@
-const Indicador = require('../Models/modeloIndicador')
-
+import  Indicador from '../Models/modeloIndicador';
 
 const obtnerInformacion = async (req,res) =>{
     try {
