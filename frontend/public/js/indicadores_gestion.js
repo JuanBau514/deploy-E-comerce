@@ -8,10 +8,14 @@ const exportar_reporte = document.querySelector('.exportarReporte');
 
 
 panel_cantidad_administradores.textContent = 'Prueba';
-panel_cantidad_clientes.textContent = 'Prueba';
-panel_cantidad_inventarios.textContent = 'Prueba';
-panel_cantidad_pedidos.textContent = 'Prueba';
+  panel_cantidad_clientes.textContent = 'Prueba';
+  panel_cantidad_inventarios.textContent = 'Prueba';
+  panel_cantidad_pedidos.textContent = 'Prueba'; 
 
+const agregar_datos = async ()=>{
+ const informacion = await fetch('/indicadorEspecifico');
+
+}
 
 boton_generar_reporte.addEventListener('click',(e)=>{
         const month = document.getElementById('monthSelector').value;
