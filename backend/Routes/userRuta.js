@@ -4,6 +4,7 @@ import empresaController from '../Controllers/empresaController.js';
 import productoController from '../Controllers/productoController.js';
 import rubroController from '../Controllers/rubroController.js';
 import rolesController from '../Controllers/rolController.js';
+import indicadorController from '../Controllers/indicadorController.js'
 import multer from 'multer';
 
 const upload = multer({ dest: '../uploads' }); // Directorio temporal para archivos
@@ -45,5 +46,10 @@ router.delete('/empresas/:id', empresaController.deleteEmpresa);
 
 // Ruta para obtener todos los rubros
 router.get('/rubros', rubroController.getRubros);
+
+
+// Ruta para obtener los datos de los indicadores
+router.get('/indicadorGeneral', indicadorController.obtenerInformacion);
+router.get('/indicadorEspecifico', indicadorController.realizarReporte);
 
 export default router;
