@@ -53,4 +53,5 @@ class Indicador{
     
 }
 //
+//export.default Indicador;
 export.default Indicador;
