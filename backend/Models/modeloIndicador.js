@@ -45,7 +45,7 @@ class Indicador{
 
         for( const consulta in consultas){
              resultados.consulta = await db.query(consultas[consulta]);
-            console.log(`Resultado de la consulta ${resultado.consulta}`)
+            console.log(`Resultado de la consulta ${resultados.consulta}`)
         }
 
         return resultados;
