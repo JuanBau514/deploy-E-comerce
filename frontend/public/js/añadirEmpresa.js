@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             razon_social: formData.get('razon_social'),
             correo: formData.get('correo'),
             telefono_empresa: formData.get('telefono_empresa'),
-            id_rubro: formData.get('id_rubro'),
+            id_rubro: parseInt(formData.get('id_rubro')), // Convertir a número
             cedula_representante_legal: formData.get('cedula_representante_legal'),
             nombre_representante: formData.get('nombre_representante'),
             apellido_representante: formData.get('apellido_representante')

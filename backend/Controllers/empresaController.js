@@ -286,13 +286,55 @@ const getEmpresas = async (req, res) => {
 
 // Crear empresa
 const createEmpresa = async (req, res) => {
+    const connection = await db.getConnection();
     try {
-        const { nit, razon_social, correo, telefono, id_rubro, cedula_representante_legal } = req.body;
-        const empresa = new Empresa(nit, razon_social, correo, telefono, id_rubro, cedula_representante_legal);
-        await empresa.save();
-        res.status(201).json({ message: 'Empresa registrada con éxito' });
+        await connection.beginTransaction();
+        
+        const { nit, razon_social, correo, telefono, id_rubro, representante } = req.body;
+
+        // Insertar usuario primero
+        const userQuery = `
+            INSERT INTO usuario (cedula, nombre, apellido, correo, telefono, id_rol)
+            VALUES (?, ?, ?, ?, ?, 3)
+        `;
+        await connection.query(userQuery, [
+            representante.cedula,
+            representante.nombre,
+            representante.apellido,
+            correo,
+            telefono
+        ]);
+
+        // Luego insertar empresa
+        const empresaQuery = `
+            INSERT INTO empresa (nit, razon_social, correo, telefono, id_rubro, cedula_representante_legal)
+            VALUES (?, ?, ?, ?, ?, ?)
+        `;
+        await connection.query(empresaQuery, [
+            nit,
+            razon_social,
+            correo,
+            telefono,
+            id_rubro,
+            representante.cedula
+        ]);
+
+        await connection.commit();
+        res.status(201).json({ 
+            success: true,
+            message: 'Empresa registrada con éxito'
+        });
+
     } catch (error) {
-        res.status(500).json({ error: 'Error al registrar empresa' });
+        await connection.rollback();
+        console.error('Error en createEmpresa:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Error al registrar empresa',
+            error: error.message
+        });
+    } finally {
+        connection.release();
     }
 };
 
