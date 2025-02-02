@@ -2,19 +2,30 @@ document.addEventListener('DOMContentLoaded', async () => {
     const form = document.getElementById('empresaForm');
     const idRubroSelect = document.getElementById('id_rubro');
 
-    // Cargar rubros
     try {
-        const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api/rubros');
-        const data = await response.json();
+    const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api/rubros', {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json'
+        }
+    });
+    
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    if (data.success && data.data) {
         data.data.forEach(rubro => {
             const option = document.createElement('option');
             option.value = rubro.id_rubro;
             option.textContent = `${rubro.id_rubro} - ${rubro.rubro}`;
             idRubroSelect.appendChild(option);
         });
-    } catch (error) {
-        console.error('Error al cargar rubros:', error);
     }
+} catch (error) {
+    console.error('Error al cargar rubros:', error);
+}
 
     // Manejar el envío del formulario
     form.addEventListener('submit', async (event) => {

@@ -24,6 +24,14 @@ const corsOptions = {
     optionsSuccessStatus: 200
 };
 
+app.use((req, res, next) => {
+    res.setHeader(
+        'Content-Security-Policy',
+        "default-src 'self'; font-src 'self' data: https: fonts.gstatic.com; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:;"
+    );
+    next();
+});
+
 app.use(cors(corsOptions));
 
 // Middleware para analizar JSON y datos de formularios
