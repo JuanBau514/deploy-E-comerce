@@ -292,35 +292,36 @@ const createEmpresa = async (req, res) => {
         
         const { nit, razon_social, correo, telefono, id_rubro, representante } = req.body;
 
-        // Insertar usuario primero
-        const userQuery = `
-            INSERT INTO usuario (cedula, nombre, apellido, correo, telefono, id_rol)
-            VALUES (?, ?, ?, ?, ?, 3)
-        `;
-        await connection.query(userQuery, [
-            representante.cedula,
-            representante.nombre,
-            representante.apellido,
-            correo,
-            telefono
-        ]);
+        // Validar id_rubro
+        const [rubroExiste] = await connection.query(
+            'SELECT id_rubro FROM rubro WHERE id_rubro = ?',
+            [id_rubro]
+        );
 
-        // Luego insertar empresa
-        const empresaQuery = `
-            INSERT INTO empresa (nit, razon_social, correo, telefono, id_rubro, cedula_representante_legal)
-            VALUES (?, ?, ?, ?, ?, ?)
-        `;
-        await connection.query(empresaQuery, [
-            nit,
-            razon_social,
-            correo,
-            telefono,
-            id_rubro,
-            representante.cedula
-        ]);
+        if (!rubroExiste.length) {
+            throw new Error('El rubro seleccionado no existe');
+        }
+
+        // Validar datos requeridos
+        if (!nit || !razon_social || !correo || !id_rubro || !representante) {
+            throw new Error('Faltan datos requeridos');
+        }
+
+        // Insertar usuario
+        await connection.query(
+            'INSERT INTO usuario (cedula, nombre, apellido, correo, telefono, id_rol) VALUES (?, ?, ?, ?, ?, 3)',
+            [representante.cedula, representante.nombre, representante.apellido, correo, telefono]
+        );
+
+        // Insertar empresa
+        await connection.query(
+            'INSERT INTO empresa (nit, razon_social, correo, telefono, id_rubro, cedula_representante_legal) VALUES (?, ?, ?, ?, ?, ?)',
+            [nit, razon_social, correo, telefono, id_rubro, representante.cedula]
+        );
 
         await connection.commit();
-        res.status(201).json({ 
+        
+        res.status(201).json({
             success: true,
             message: 'Empresa registrada con éxito'
         });
@@ -330,8 +331,7 @@ const createEmpresa = async (req, res) => {
         console.error('Error en createEmpresa:', error);
         res.status(500).json({
             success: false,
-            message: 'Error al registrar empresa',
-            error: error.message
+            message: error.message || 'Error al registrar empresa'
         });
     } finally {
         connection.release();

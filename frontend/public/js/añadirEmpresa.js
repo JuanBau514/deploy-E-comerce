@@ -28,18 +28,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 }
 
     // Manejar el envío del formulario
-    form.addEventListener('submit', async (event) => {
+        form.addEventListener('submit', async (event) => {
         event.preventDefault();
         const formData = new FormData(form);
+        
         const empresaData = {
             nit: formData.get('nit'),
             razon_social: formData.get('razon_social'),
             correo: formData.get('correo'),
-            telefono_empresa: formData.get('telefono_empresa'),
-            id_rubro: parseInt(formData.get('id_rubro')), // Convertir a número
-            cedula_representante_legal: formData.get('cedula_representante_legal'),
-            nombre_representante: formData.get('nombre_representante'),
-            apellido_representante: formData.get('apellido_representante')
+            telefono: formData.get('telefono_empresa'),
+            id_rubro: parseInt(formData.get('id_rubro')),
+            representante: {
+                cedula: formData.get('cedula_representante_legal'),
+                nombre: formData.get('nombre_representante'),
+                apellido: formData.get('apellido_representante')
+            }
         };
 
         try {
@@ -51,16 +54,17 @@ document.addEventListener('DOMContentLoaded', async () => {
                 body: JSON.stringify(empresaData)
             });
 
+            const data = await response.json();
+
             if (response.ok) {
                 alert('Empresa registrada con éxito');
                 window.location.href = './empresas_ver.html';
             } else {
-                const errorData = await response.json();
-                alert(`Error: ${errorData.message}`);
+                throw new Error(data.message || 'Error al registrar empresa');
             }
         } catch (error) {
-            console.error('Error al registrar empresa:', error);
-            alert('Error al registrar empresa');
+            console.error('Error detallado:', error);
+            alert(error.message || 'Error al registrar empresa');
         }
     });
 });
