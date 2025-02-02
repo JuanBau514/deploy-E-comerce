@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const idRubroSelect = document.getElementById('id_rubro');
 
     try {
-    const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api/rubros', {
+    const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/rubros', {
         method: 'GET',
         headers: {
             'Accept': 'application/json'
