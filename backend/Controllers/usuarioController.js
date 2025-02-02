@@ -151,10 +151,26 @@ const createUsuario = async (req, res) => {
 
 const getUsuarios = async (req, res) => {
     try {
+        console.log('Iniciando obtención de usuarios');
         const usuarios = await Usuario.getAll();
-        res.status(200).json(usuarios);
+        
+        if (!usuarios || usuarios.length === 0) {
+            console.log('No se encontraron usuarios');
+            return res.status(404).json({
+                success: false,
+                message: 'No se encontraron usuarios'
+            });
+        }
+
+        console.log(`Se encontraron ${usuarios.length} usuarios`);
+        return res.status(200).json([usuarios]); // Formato específico requerido por el frontend
     } catch (error) {
-        res.status(500).json({ error: 'Error al obtener usuarios' });
+        console.error('Error en getUsuarios:', error);
+        return res.status(500).json({ 
+            success: false,
+            message: 'Error al obtener usuarios',
+            error: process.env.NODE_ENV === 'development' ? error.message : 'Error interno del servidor'
+        });
     }
 };
 

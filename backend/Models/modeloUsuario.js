@@ -59,6 +59,31 @@ class Usuario {
         }
     }
 
+    // Método getAll en el modelo Usuario
+    static async getAll() {
+        try {
+            const [rows] = await db.query(`
+                SELECT 
+                    u.cedula,
+                    u.nombre,
+                    u.apellido,
+                    u.correo,
+                    g.nombre as genero,
+                    r.nombre as rol,
+                    e.nit as nit_empresa,
+                    e.razon_social
+                FROM usuario u
+                LEFT JOIN genero g ON u.id_genero = g.id
+                LEFT JOIN rol r ON u.id_rol = r.id
+                LEFT JOIN empresa e ON u.nit_empresa = e.nit
+            `);
+            return rows;
+        } catch (error) {
+            console.error('Error en Usuario.getAll:', error);
+            throw error;
+        }
+    }
+
     static async delete(cedula) {
         const query = 'DELETE FROM usuario WHERE cedula = ?';
         return db.query(query, cedula);

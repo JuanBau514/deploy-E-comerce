@@ -1,5 +1,6 @@
 const barraBusqueda = document.getElementById('busqueda');
 const botonBuscar = document.getElementById('botonBusqueda');
+const API_URL = 'https://deploy-e-comerce-production.up.railway.app/api';
 const tablaUsuarios = document.getElementById('tabla_usuarios').getElementsByTagName('tbody')[0];
 
 const creaFila = (id, nombre, apellido, correo, genero, id_rol, nit_empresa, razon_social) => {
@@ -76,9 +77,13 @@ const agregarUsuariosTabla = (usuarios) => {
 }
 
 window.onload = function() {
-    fetch('${API_URL}/users/usuarios', {
-        method: 'GET'
-    }).then((data) => {
+     fetch(`${API_URL}/users/usuarios`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then((data) => {
         data.json().then((usuarios) => {
             agregarUsuariosTabla(usuarios[0]);
 
@@ -137,7 +142,7 @@ window.onload = function() {
                         button.addEventListener('click', (e) => {
                             const id = e.target.getAttribute('data-id');
                             // Redirigir a una página de edición con el ID del usuario
-                            window.location.href = `/editarUsuario.html?id=${id}`;
+                            window.location.href = `/admin_usuarios/editarUsuario.html?id=${id}`;
                         });
                     });
 
