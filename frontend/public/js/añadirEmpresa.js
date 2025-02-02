@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const idRubroSelect = document.getElementById('id_rubro');
 
     try {
-    const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/empresas', {
+    const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/rubros', {
         method: 'GET',
         headers: {
             'Accept': 'application/json'
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         };
 
         try {
-            const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api/empresas', {
+            const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/empresas', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
