@@ -12,7 +12,14 @@ class Rubro {
     }
 
     static async getAll() {
-        return await db.query('SELECT * FROM rubro');
+        try {
+            const query = 'SELECT * FROM rubro ORDER BY id_rubro';
+            const [rubros] = await db.query(query);
+            return rubros;
+        } catch (error) {
+            console.error('Error en getAll rubros:', error);
+            throw error;
+        }
     }
 
     async update() {
