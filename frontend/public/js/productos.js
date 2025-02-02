@@ -142,7 +142,7 @@ window.onload = async function() {
                     
                 }else{            
                     alert("producto NO encontrado")
-                    window.location.href = './admin_productos/productos_ver.html';
+                    window.location.href = './productos_ver.html';
                     
                 }
                 

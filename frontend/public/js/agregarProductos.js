@@ -22,7 +22,7 @@ window.onload = async function(){
         const url_imagen = (previa.src === "" || previa.src === null || previa.src === undefined) ? "" : previa.src;
 
                     alert('producto creado')
-            window.location.href = "./admin_productos/productos_ver.html"
+            window.location.href = "./productos_ver.html"
 
         await fetch('https://deploy-e-comerce-production.up.railway.app/api//users/productos',{
             method:"POST",

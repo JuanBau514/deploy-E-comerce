@@ -40,6 +40,7 @@ router.delete('/productos', productoController.deleteProducto);
 router.post('/login', usuarioController.login);
 
 // Rutas de empresas
+router.post('/empresas', empresaController.createEmpresa); 
 router.get('/empresas', empresaController.getEmpresas);
 router.put('/empresas', empresaController.updateEmpresa);
 router.delete('/empresas/:id', empresaController.deleteEmpresa);

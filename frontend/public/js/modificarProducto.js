@@ -69,7 +69,7 @@ window.onload = async function() {
             })
         })
         alert('ARTICULO MODIFIED');
-        window.location.href = "./admin_productos/productos_ver.html";      
+        window.location.href = "./productos_ver.html";      
     });
 
     campoImagen.addEventListener('input', async () => {
