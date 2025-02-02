@@ -291,6 +291,7 @@ const createEmpresa = async (req, res) => {
         await connection.beginTransaction();
         
         const { nit, razon_social, correo, telefono, id_rubro, representante } = req.body;
+        const defaultPassword = '12345'; // Contraseña por defecto
 
         // Validar id_rubro
         const [rubroExiste] = await connection.query(
@@ -307,10 +308,10 @@ const createEmpresa = async (req, res) => {
             throw new Error('Faltan datos requeridos');
         }
 
-        // Insertar usuario
+        // Insertar usuario con contraseña por defecto
         await connection.query(
-            'INSERT INTO usuario (cedula, nombre, apellido, correo, telefono, id_rol) VALUES (?, ?, ?, ?, ?, 3)',
-            [representante.cedula, representante.nombre, representante.apellido, correo, telefono]
+            'INSERT INTO usuario (cedula, nombre, apellido, correo, telefono, contraseña, id_rol) VALUES (?, ?, ?, ?, ?, ?, 3)',
+            [representante.cedula, representante.nombre, representante.apellido, correo, telefono, defaultPassword]
         );
 
         // Insertar empresa
@@ -319,11 +320,39 @@ const createEmpresa = async (req, res) => {
             [nit, razon_social, correo, telefono, id_rubro, representante.cedula]
         );
 
+        // Configurar envío de correo
+        const transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true,
+            auth: {
+                user: process.env.EMAIL,
+                pass: process.env.EMAIL_PASSWORD
+            }
+        });
+
+        // Enviar correo con credenciales
+        await transporter.sendMail({
+            from: process.env.EMAIL,
+            to: correo,
+            subject: 'Registro Exitoso - Cambio de Contraseña Requerido',
+            html: `
+                <h1>Bienvenido a nuestra plataforma</h1>
+                <p>Su empresa ha sido registrada exitosamente.</p>
+                <p>Sus credenciales de acceso son:</p>
+                <ul>
+                    <li>Usuario: ${correo}</li>
+                    <li>Contraseña temporal: ${defaultPassword}</li>
+                </ul>
+                <p><strong>Por seguridad, por favor ingrese al sistema y cambie su contraseña inmediatamente.</strong></p>
+            `
+        });
+
         await connection.commit();
         
         res.status(201).json({
             success: true,
-            message: 'Empresa registrada con éxito'
+            message: 'Empresa registrada con éxito. Se ha enviado un correo con las credenciales.'
         });
 
     } catch (error) {
@@ -334,7 +363,9 @@ const createEmpresa = async (req, res) => {
             message: error.message || 'Error al registrar empresa'
         });
     } finally {
-        connection.release();
+        if (connection) {
+            connection.release();
+        }
     }
 };
 
