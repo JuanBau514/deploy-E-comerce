@@ -1,8 +1,9 @@
 import  Indicador from '../Models/modeloIndicador.js';
 
 async function obtenerInformacion (req,res) {
+    const queries =  ['SELECT COUNT(*) FROM producto;',"SELECT COUNT(*) FROM usuario WHERE id_rol = 2;","SELECT COUNT(*) FROM usuario WHERE id_rol=1;","SELECT COUNT(*) FROM factura;"] 
     try {
-        const resultado = await Indicador.realizarConsulta();
+        const resultado = await Indicador.realizarConsulta(queries[0]);
         console.log(resultado)
         res.status(200).json(resultado);
     } catch (error) {
