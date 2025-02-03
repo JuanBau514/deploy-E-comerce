@@ -11,24 +11,16 @@ class Indicador{
 
     static async realizarConsulta (){
        // const query = 'SELECT COUNT(*) FROM producto';
-        const queries = {
-            "producto": "SELECT COUNT(*) FROM producto;",
-            "cliente": "SELECT COUNT(*) FROM usuario WHERE id_rol = 2;",
-            "administrador": "SELECT COUNT(*) FROM usuario WHERE id_rol=1;",
-            "pedido": "SELECT COUNT(*) FROM factura;"
-        }
-        const resultados = {}; //En este objeto, se guardaran los resultados de cada consulta.
-        for (const consulta in queries) {
-            console.log(`consulta: ${consulta}`)
-            console.log(`Haiendo la consulta: ${queries[consulta]}`)
-            
-            resultados.consulta = await db.query(`${queries[consulta]}`);
-            
-            console.log(`Resultado de la consulta: ${resultados.consulta}`)
-            
-        }
+        const consulta_producto = "SELECT COUNT(*) FROM producto;"
+        const consulta_cliente = "SELECT COUNT(*) FROM usuario WHERE id_rol = 2;"
+        const consulta_administrador = "SELECT COUNT(*) FROM usuario WHERE id_rol=1;"
+        const consulta_pedido = "SELECT COUNT(*) FROM factura;"
+
+        const rere = await db.query(consulta_producto);
+        resultados.push(rere)
 
         return resultados;
+        
     }
 
     static async realizarReporte (mes,annio)
