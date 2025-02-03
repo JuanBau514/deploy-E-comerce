@@ -13,16 +13,15 @@ class Indicador{
        // const query = 'SELECT COUNT(*) FROM producto';
         const queries =  ['SELECT COUNT(*) FROM producto;',"SELECT COUNT(*) FROM usuario WHERE id_rol = 2;","SELECT COUNT(*) FRM usuario WHERE id_rol=1;","SELECT COUNT(*) FROM factura;"] 
         const resultados = []; //En este objeto, se guardaran los resultados de cada consulta.
-        try{
-            for (const consulta of queries) {
-                console.log(`consulta: ${consulta}`)
-                console.log(`Haiendo la consulta: ${consulta}`)
-                const resultado = await db.query(consulta);
-                resultados.push(resultado);
-            }
-        }catch(error){
-            console.log(error);
-        }
+       try{
+           for(let i=0; i<=queries.length; i++){
+            const resultado = await db.query(queries[i]);
+            resultados.push(resultado);
+           }
+       }catch(error){
+           console.log(error);
+       }
+       
         
         
         return resultados;
