@@ -16,9 +16,8 @@ class Indicador{
         queries.forEach((consulta)=>{
 
             console.log(`Haciendo la consulta: ${consulta}`)
-            let resultado = db.query(`${consulta}`);
-            console.log(`Mostrando el resultado ${resultado}`)
-            resultado = resultado.then((informacion)=>{return informacion})
+            let resultado = await db.query(`${consulta}`);
+            console.log(`Mostrando el resultado ${resultado}`)            
             resultados.push(resultado);
         })
 
