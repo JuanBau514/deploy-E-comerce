@@ -4,13 +4,9 @@ async function obtenerInformacion (req,res) {
     const queries =  ['SELECT COUNT(*) FROM producto;',"SELECT COUNT(*) FROM usuario WHERE id_rol = 2;","SELECT COUNT(*) FROM usuario WHERE id_rol=1;","SELECT COUNT(*) FROM factura;"] 
     const resultados = []
     try {
-        queries.forEach((consulta)=>{
-        const resultado = Indicador.realizarConsulta(consulta);    
-        resultados.push(resultado);
-        })
-        
-        console.log(resultados)
-        res.status(200).json(resultados);
+        const resultado = await Indicador.realizarConsulta( ['SELECT COUNT(*) FROM producto;',"SELECT COUNT(*) FROM usuario WHERE id_rol = 2;","SELECT COUNT(*) FROM usuario WHERE id_rol=1;","SELECT COUNT(*) FROM factura;"]);    
+        console.log(resultado)
+        res.status(200).json(resultado);
     } catch (error) {
         console.log(error);
         res.status(500).json({ error:`Error al realizar las queries ${error}` });
