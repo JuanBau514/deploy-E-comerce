@@ -11,36 +11,23 @@ class Indicador{
 
     static async realizarConsulta (){
        // const query = 'SELECT COUNT(*) FROM producto';
-        const queries =  ['SELECT COUNT(*) FROM producto;',
-                          "SELECT COUNT(*) FROM usuario WHERE id_rol = 2;",
-                          "SELECT COUNT(*) FROM usuario WHERE id_rol=1;",
-                          "SELECT COUNT(*) FROM factura;"
-                         ] 
-         //En este objeto, se guardaran los resultados de cada consulta.
+        const queries =  ['SELECT COUNT(*) FROM producto;',"SELECT COUNT(*) FROM usuario WHERE id_rol = 2;","SELECT COUNT(*) FROM usuario WHERE id_rol=1;","SELECT COUNT(*) FROM factura;"] 
+        const resultados = []; //En este objeto, se guardaran los resultados de cada consulta.
         try{
-           const resultados = await Promise.all(queries.map(query => db.query(query)));
+            for (const consulta of queries) {
+                console.log(`consulta: ${consulta}`)
+                console.log(`Haiendo la consulta: ${consulta}`)
+                const resultado = db.query(`${consulta}`);
+                resultados.push(resultado) 
+            }
         }catch(error){
             console.log(error);
         }
+        
+        
         return resultados;
     }
 
-async function executeQueriesParallel() {
-    const queries = [
-        "INSERT INTO table_name (column) VALUES ('value1')",
-        "UPDATE table_name SET column = 'value2' WHERE id = 1",
-        "DELETE FROM table_name WHERE id = 2"
-    ];
-
-    try {
-        await Promise.all(queries.map(query => pool.query(query)));
-        console.log('All queries executed in parallel.');
-    } catch (err) {
-        console.error('Error executing queries:', err);
-    }
-}
-
-    
     static async realizarReporte (mes,annio)
     {
         const consultas = 
@@ -72,5 +59,3 @@ async function executeQueriesParallel() {
 
 
 const informacion = Indicador.realizarConsulta();
-
-
