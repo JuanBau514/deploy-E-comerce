@@ -1,6 +1,5 @@
 import db from './conection.js';
 
-
 class Indicador{
     constructor(numeroProductos, numeroClientes, numeroAdministradores,pedidosRealizados){
         this.numeroProductos = numeroProductos;
@@ -11,22 +10,15 @@ class Indicador{
 
     static async realizarConsulta (){
        // const query = 'SELECT COUNT(*) FROM producto';
-        const queries = {
-            "producto": "SELECT COUNT(*) FROM producto;",
-            "cliente": "SELECT COUNT(*) FROM usuario WHERE id_rol = 2;",
-            "administrador": "SELECT COUNT(*) FROM usuario WHERE id_rol=1;",
-            "pedido": "SELECT COUNT(*) FROM factura;"
-        }
-        const resultados = {}; //En este objeto, se guardaran los resultados de cada consulta.
-        for (const consulta in queries) {
-            console.log(`consulta: ${consulta}`)
-            console.log(`Haiendo la consulta: ${queries[consulta]}`)
-            
-            resultados.consulta = await db.query(`${queries[consulta]}`);
-            
-            console.log(`Resultado de la consulta: ${resultados.consulta}`)
-            
-        }
+        const queries =  ['SELECT COUNT(*) FROM producto;',"SELECT COUNT(*) FROM usuario WHERE id_rol = 2;","SELECT COUNT(*) FROM usuario WHERE id_rol=1;","SELECT COUNT(*) FROM factura;"] 
+
+        const resultados = []; //En este objeto, se guardaran los resultados de cada consulta.
+        queries.forEach((consulta)=>{
+
+            console.log(`Haciendo la consulta: ${consulta}`)
+            const resultado = db.query(`${consulta}`);
+            console.log(`Mostrando el resultado ${resultado}`)
+        })
 
         return resultados;
     }
@@ -57,5 +49,10 @@ class Indicador{
     
 }
 //
-//export.default Indicador;
+
 export default Indicador
+
+
+//const informacion = Indicador.realizarConsulta();
+
+
