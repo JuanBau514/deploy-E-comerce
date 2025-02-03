@@ -8,7 +8,7 @@ class Indicador{
         this.pedidosRealizados = pedidosRealizados;
     }
 
-    static async realizarConsulta (){
+    static realizarConsulta (){
        // const query = 'SELECT COUNT(*) FROM producto';
         const queries =  ['SELECT COUNT(*) FROM producto;',"SELECT COUNT(*) FROM usuario WHERE id_rol = 2;","SELECT COUNT(*) FROM usuario WHERE id_rol=1;","SELECT COUNT(*) FROM factura;"] 
 
