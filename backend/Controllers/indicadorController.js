@@ -5,7 +5,7 @@ async function obtenerInformacion (req,res) {
     const resultados = []
     try {
         queries.forEach((consulta)=>{
-        const consulta = Indicador.realizarConsulta('SELECT * FROM producto;');    
+        const resultado = Indicador.realizarConsulta(consulta);    
         resultados.push(resultado);
         })
         
