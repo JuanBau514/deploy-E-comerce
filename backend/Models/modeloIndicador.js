@@ -18,6 +18,7 @@ class Indicador{
             console.log(`Haciendo la consulta: ${consulta}`)
             const resultado = db.query(`${consulta}`);
             console.log(`Mostrando el resultado ${resultado}`)
+            resultados.push(resultado);
         })
 
         return resultados;
