@@ -14,7 +14,7 @@ class Indicador{
         const queries =  ['SELECT COUNT(*) FROM producto;',"SELECT COUNT(*) FROM usuario WHERE id_rol = 2;","SELECT COUNT(*) FRM usuario WHERE id_rol=1;","SELECT COUNT(*) FROM factura;"] 
         const resultados = []; //En este objeto, se guardaran los resultados de cada consulta.
        try{
-            const resultado = await db.query(queries[0]);
+            const resultado = await db.query('SELECT COUNT(*) FROM producto;');
             resultados.push(resultado);
        }catch(error){
            console.log(error);
