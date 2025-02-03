@@ -8,20 +8,11 @@ class Indicador{
         this.pedidosRealizados = pedidosRealizados;
     }
 
-    static realizarConsulta (){
-       // const query = 'SELECT COUNT(*) FROM producto';
-        const queries =  ['SELECT COUNT(*) FROM producto;',"SELECT COUNT(*) FROM usuario WHERE id_rol = 2;","SELECT COUNT(*) FROM usuario WHERE id_rol=1;","SELECT COUNT(*) FROM factura;"] 
-
-        const resultados = []; //En este objeto, se guardaran los resultados de cada consulta.
-        queries.forEach(async (consulta)=>{
-
+    static async realizarConsulta (consulta){
             console.log(`Haciendo la consulta: ${consulta}`)
             let resultado = await db.query(consulta);
             console.log(`Mostrando el resultado ${resultado}`)            
-            resultados.push(resultado);
-        })
-
-        return resultados;
+        return resultado;
     }
 
     static async realizarReporte (mes,annio)
