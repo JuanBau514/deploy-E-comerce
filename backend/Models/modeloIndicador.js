@@ -17,7 +17,7 @@ class Indicador{
             for (const consulta of queries) {
                 console.log(`consulta: ${consulta}`)
                 console.log(`Haiendo la consulta: ${consulta}`)
-                const resultado = db.query(`${consulta}`);
+                const resultado = await db.query(`${consulta}`);
                 resultados.push(resultado) 
             }
         }catch(error){
