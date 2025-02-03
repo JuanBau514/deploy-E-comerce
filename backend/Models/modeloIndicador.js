@@ -15,14 +15,10 @@ class Indicador{
         const resultados = []; //En este objeto, se guardaran los resultados de cada consulta.
        try{
             const resultado = await db.query('SELECT COUNT(*) FROM producto;');
-            resultados.push(resultado);
        }catch(error){
            console.log(error);
        }
-       
-        
-        
-        return resultados;
+        return resultado;
     }
 
     static async realizarReporte (mes,annio)
