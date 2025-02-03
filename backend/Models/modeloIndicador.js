@@ -19,7 +19,7 @@ class Indicador{
         const rere = await db.query(consulta_producto);
         resultados.push(rere)
 
-        return resultados;
+        return rere;
         
     }
 
