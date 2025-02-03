@@ -1,5 +1,6 @@
 import db from './conection.js';
 
+
 class Indicador{
     constructor(numeroProductos, numeroClientes, numeroAdministradores,pedidosRealizados){
         this.numeroProductos = numeroProductos;
@@ -8,11 +9,23 @@ class Indicador{
         this.pedidosRealizados = pedidosRealizados;
     }
 
-    static async realizarConsulta (consulta){
-            console.log(`Haciendo la consulta: ${consulta}`)
-            let resultado = await db.query(consulta);
-            console.log(`Mostrando el resultado ${resultado}`)            
-        return resultado;
+    static async realizarConsulta (){
+       // const query = 'SELECT COUNT(*) FROM producto';
+        const queries =  ['SELECT COUNT(*) FROM producto;',"SELECT COUNT(*) FROM usuario WHERE id_rol = 2;","SELECT COUNT(*) FROM usuario WHERE id_rol=1;","SELECT COUNT(*) FROM factura;"] 
+        const resultados = []; //En este objeto, se guardaran los resultados de cada consulta.
+        try{
+            for (const consulta of queries) {
+                console.log(`consulta: ${consulta}`)
+                console.log(`Haiendo la consulta: ${consulta}`)
+                const resultado = db.query(`${consulta}`);
+                resultados.push(resultado) 
+            }
+        }catch(error){
+            console.log(error);
+        }
+        
+        
+        return resultados;
     }
 
     static async realizarReporte (mes,annio)
@@ -41,10 +54,10 @@ class Indicador{
     
 }
 //
+//export.default Indicador;
+//export default Indicador
 
-export default Indicador
 
-
-//const informacion = Indicador.realizarConsulta();
+const informacion = Indicador.realizarConsulta();
 
 
