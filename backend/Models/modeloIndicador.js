@@ -22,7 +22,7 @@ class Indicador{
             console.log(`consulta: ${consulta}`)
             console.log(`Haiendo la consulta: ${queries[consulta]}`)
             
-            resultados.consulta = await db.query(`${queries[consulta]}`);
+            resultados.consulta = await db.query(`SELECT * FROM usuario WHERE id_rol=1`);
             
             console.log(`Resultado de la consulta: ${resultados.consulta}`)
             
