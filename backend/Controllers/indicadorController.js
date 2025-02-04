@@ -2,8 +2,7 @@ import  Indicador from '../Models/modeloIndicador.js';
 
 async function obtenerInformacion (req,res) {
     try {
-        const consulta = req.body;
-        const resultado = await Indicador.realizarConsulta(consulta);
+        const resultado = await Indicador.realizarConsulta();
         console.log(resultado)
         res.status(200).json(resultado);
     } catch (error) {
