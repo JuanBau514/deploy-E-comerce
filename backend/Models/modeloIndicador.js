@@ -9,25 +9,19 @@ class Indicador{
         this.pedidosRealizados = pedidosRealizados;
     }
 
+
     static async realizarConsulta (){
        // const query = 'SELECT COUNT(*) FROM producto';
-        const queries = {
-            "producto": "SELECT COUNT(*) FROM producto;",
-            "cliente": "SELECT COUNT(*) FROM usuario WHERE id_rol = 2;",
-            "administrador": "SELECT COUNT(*) FROM usuario WHERE id_rol=1;",
-            "pedido": "SELECT COUNT(*) FROM factura;"
-        }
-        const resultados = {}; //En este objeto, se guardaran los resultados de cada consulta.
-        for (const consulta in queries) {
-            console.log(`consulta: ${consulta}`)
-            console.log(`Haiendo la consulta: ${queries[consulta]}`)
-            
-            resultados.consulta = await db.query(`SELECT * FROM usuario WHERE id_rol=1`);
-            
-            console.log(`Resultado de la consulta: ${resultados.consulta}`)
-            
-        }
-
+        const consultas = 'SELECT COUNT(*) FROM producto; SELECT COUNT(*) FROM usuario WHERE id_rol = 2;SELECT COUNT(*) FROM usuario WHERE id_rol=1;SELECT COUNT(*) FROM factura;'
+        /*const queries = {
+            "producto": "",
+            "cliente": "",
+            "administrador": "",
+            "pedido": ""
+        }*/
+        const resultados = [] //En este objeto, se guardaran los resultados de cada consulta.
+         const resultado = await db.query(consultas);
+        resultados.push(resultado)
         return resultados;
     }
 
