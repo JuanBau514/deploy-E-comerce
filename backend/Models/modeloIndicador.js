@@ -10,7 +10,7 @@ class Indicador{
     static async realizarConsulta (){
     
        // const query = 'SELECT COUNT(*) FROM producto'
-        const resultado = db.query(`
+        const [resultado] = db.query(`
         SELECT COUNT(*) FROM producto;
         SELECT COUNT(*) FROM usuario WHERE id_rol = 2;
         SELECT COUNT(*) FROM usuario WHERE id_rol=1;
