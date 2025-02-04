@@ -14,10 +14,10 @@ class Indicador{
 
        // const query = 'SELECT COUNT(*) FROM producto';
         const queries [ 
-            "producto": 'SELECT COUNT(*) FROM producto;',
-            "cliente": "SELECT COUNT(*) FROM usuario WHERE id_rol = 2;",
-            "administrador": "SELECT COUNT(*) FROM usuario WHERE id_rol=1",
-            "pedido": "SELECT COUNT(*) FROM factura;"
+            'SELECT COUNT(*) FROM producto;',
+            "SELECT COUNT(*) FROM usuario WHERE id_rol = 2;",
+            "SELECT COUNT(*) FROM usuario WHERE id_rol=1",
+            "SELECT COUNT(*) FROM factura;"
         ]
         for (const consulta of queries) {
              const resultado await db.query(consulta)
