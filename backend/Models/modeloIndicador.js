@@ -10,18 +10,14 @@ class Indicador{
     static async realizarConsulta (){
     
        // const query = 'SELECT COUNT(*) FROM producto'
-        db.query(`
+        const resultado = db.query(`
         SELECT COUNT(*) FROM producto;
         SELECT COUNT(*) FROM usuario WHERE id_rol = 2;
         SELECT COUNT(*) FROM usuario WHERE id_rol=1;
         SELECT COUNT(*) FROM factura;
-        `,function (error, resultados, fields) {
-          if (error) throw error;
-            
-          return resultados;
-        }
-        );
-      
+        `);
+
+        return resultado;
     }
     static async realizarReporte (mes,annio)
     {
