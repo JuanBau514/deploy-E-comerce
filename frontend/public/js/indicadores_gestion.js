@@ -17,7 +17,7 @@ const agregar_datos = async ()=>{
      const respuesta = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/indicadorGeneral',
       {
        method:'post',
-        body: JSON.stringyfy({"consulta": "SELECT * FROM usuario"});
+        body: JSON.stringyfy({"consulta": "SELECT * FROM usuario"})
      });   
      const informacion = await respuesta.json();
       console.log(informacion);
