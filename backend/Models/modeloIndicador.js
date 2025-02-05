@@ -10,14 +10,13 @@ class Indicador{
     static async realizarConsulta (){
     
        // const query = 'SELECT COUNT(*) FROM producto'
-        const [resultado] = db.query(`
+        return  await db.query(`
         SELECT COUNT(*) FROM producto;
         SELECT COUNT(*) FROM usuario WHERE id_rol = 2;
         SELECT COUNT(*) FROM usuario WHERE id_rol=1;
         SELECT COUNT(*) FROM factura;
         `);
 
-        return resultado;
     }
     static async realizarReporte (mes,annio)
     {
