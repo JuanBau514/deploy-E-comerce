@@ -17,7 +17,7 @@ const agregar_datos = async ()=>{
      const informacion = await respuesta.json();
       //console.log(informacion);
     informacion.forEach((consulta)=>{
-      console.log(consulta)
+      console.log(consulta[0]);
     })
   }
   catch(error){
