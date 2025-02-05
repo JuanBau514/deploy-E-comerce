@@ -34,13 +34,13 @@ async function agregarEmpresa() {
 async function editarEmpresa(nit) {
     // Lógica para editar una empresa
     alert('Editar empresa con NIT: ' + nit);
-    window.location.href = '/empresas_editar.html';
+    window.location.href = './empresas_editar.html';
 }
 
 async function eliminarEmpresa(nit) {
     if (confirm('¿Estás seguro de que deseas eliminar esta empresa?')) {
         try {
-            const response = await fetch(`https://deploy-e-comerce-production.up.railway.app/api/empresas/${nit}`, {
+            const response = await fetch(`https://deploy-e-comerce-production.up.railway.app/api/users/empresas/${nit}`, {
                 method: 'DELETE'
             });
 

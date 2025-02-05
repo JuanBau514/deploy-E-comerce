@@ -384,12 +384,33 @@ const updateEmpresa = async (req, res) => {
 
 // Eliminar empresa
 const deleteEmpresa = async (req, res) => {
+    let connection;
     try {
         const { id } = req.params;
-        await Empresa.delete(id);
+        connection = await db.getConnection();
+        await connection.beginTransaction();
+
+        // Eliminar la empresa
+        const deleteEmpresaQuery = 'DELETE FROM empresa WHERE nit = ?';
+        const [result] = await connection.query(deleteEmpresaQuery, [id]);
+
+        if (result.affectedRows === 0) {
+            await connection.rollback();
+            return res.status(404).json({ message: 'Empresa no encontrada' });
+        }
+
+        // Eliminar el usuario asociado
+        const deleteUserQuery = 'DELETE FROM usuario WHERE cedula = (SELECT cedula_representante_legal FROM empresa WHERE nit = ?)';
+        await connection.query(deleteUserQuery, [id]);
+
+        await connection.commit();
         res.status(200).json({ message: 'Empresa eliminada con éxito' });
     } catch (error) {
+        if (connection) await connection.rollback();
+        console.error('Error al eliminar empresa:', error);
         res.status(500).json({ error: 'Error al eliminar empresa' });
+    } finally {
+        if (connection) connection.release();
     }
 };
 

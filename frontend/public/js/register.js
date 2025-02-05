@@ -74,9 +74,6 @@ async function registrarPersonaNatural() {
     const email = document.getElementById('email').value.trim();
     const rutFile = document.getElementById('rut').files[0];
 
-    // Log para debug
-    console.log('Tipo de archivo:', rutFile.type);
-
     if (!nickname || !lastname || !email || !rutFile) {
         alert('Todos los campos son obligatorios.');
         return;
@@ -89,42 +86,20 @@ async function registrarPersonaNatural() {
         return;
     }
 
-    // Lista expandida de tipos MIME aceptados
-    const allowedTypes = [
-        'application/pdf',
-        'image/jpeg',
-        'image/jpg',
-        'image/png',
-        // Variaciones comunes de PDF
-        'application/x-pdf',
-        'application/acrobat',
-        'applications/vnd.pdf',
-        'text/pdf',
-        'text/x-pdf'
-    ];
+    const formData = new FormData();
+    formData.append('tipo', 'Persona Natural');
+    formData.append('nombre', nickname);
+    formData.append('apellido', lastname);
+    formData.append('email', email);
+    formData.append('archivo', rutFile);
 
-    if (!allowedTypes.includes(rutFile.type)) {
-        alert('Por favor, suba un archivo válido (PDF, JPG, JPEG, PNG).');
-        return;
-    }
-
-    // Aquí iría el código para registrar a la persona natural en tu base de datos
-
-    // Enviar correo de notificación
+    // Enviar datos al servidor
     await fetch('/api/enviarCorreoRegistro', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            tipo: 'Persona Natural',
-            nombre: nickname,
-            apellido: lastname,
-            email: email
-        })
+        body: formData
     });
 
-     alert('Usuario registrado vamos a validar tu usuario y luego te enviaremos un correo de confirmación');
+    alert('Usuario registrado. Vamos a validar tu usuario y luego te enviaremos un correo de confirmación.');
     window.location.href = './userPage.html';
 }
 
@@ -142,9 +117,6 @@ async function registrarEmpresa() {
     const companyEmail = companyEmailElement.value.trim();
     const companyRutFile = companyRutFileElement.files[0];
 
-    // Log para debug
-    console.log('Tipo de archivo:', companyRutFile ? companyRutFile.type : 'No se seleccionó ningún archivo');
-
     if (!companyName || !companyEmail || !companyRutFile) {
         alert('Todos los campos son obligatorios.');
         return;
@@ -157,42 +129,18 @@ async function registrarEmpresa() {
         return;
     }
 
-    // Lista expandida de tipos MIME aceptados
-    const allowedTypes = [
-        'application/pdf',
-        'image/jpeg',
-        'image/jpg',
-        'image/png',
-        // Variaciones comunes de PDF
-        'application/x-pdf',
-        'application/acrobat',
-        'applications/vnd.pdf',
-        'text/pdf',
-        'text/x-pdf'
-    ];
+    const formData = new FormData();
+    formData.append('tipo', 'Empresa');
+    formData.append('nombre', companyName);
+    formData.append('email', companyEmail);
+    formData.append('archivo', companyRutFile);
 
-    if (!allowedTypes.includes(companyRutFile.type)) {
-        alert('Por favor, suba un archivo válido (PDF, JPG, JPEG, PNG).');
-        return;
-    }
-
-    // Aquí iría el código para registrar a la empresa en tu base de datos
-
-    // Enviar correo de notificación
+    // Enviar datos al servidor
     await fetch('/api/enviarCorreoRegistro', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            tipo: 'Empresa',
-            nombre: companyName,
-            apellido: '', // Las empresas no tienen apellido
-            email: companyEmail
-        })
+        body: formData
     });
 
-    // Redirigir a la página de usuario
     alert('Empresa registrada. Vamos a validar tu usuario y luego te enviaremos un correo de confirmación.');
     window.location.href = './userPage.html';
 }

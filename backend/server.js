@@ -6,6 +6,7 @@ import userRoutes from './Routes/userRuta.js';
 import empresaRoutes from './Routes/userRuta.js'; 
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import multer from 'multer';
 
 dotenv.config();
 const app = express();
@@ -31,7 +32,7 @@ app.use((req, res, next) => {
     res.setHeader(
         'Content-Security-Policy',
         "default-src 'self'; " +
-        "font-src 'self' https://fonts.gstatic.com https://unpkg.com; " +
+        "font-src 'self' https://fonts.gstatic.com https://unpkg.com data:; " +
         "style-src 'self' 'unsafe-inline' https://unpkg.com https://fonts.googleapis.com; " +
         "img-src 'self' data: https:; " +
         "connect-src 'self' https://deploy-e-comerce-production.up.railway.app; " +
@@ -45,6 +46,10 @@ app.use(cors(corsOptions));
 // Middleware para analizar JSON y datos de formularios
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+
+// Configuración de multer para manejar la subida de archivos
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 // Servir archivos estáticos del frontend
 app.use(express.static(path.join(__dirname, '../dist')));
@@ -65,12 +70,18 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-function enviarCorreoRegistro(tipo, nombre, apellido, email) {
+function enviarCorreoRegistro(tipo, nombre, apellido, email, archivo) {
     const mailOptions = {
         from: process.env.EMAIL,
         to: process.env.EMAIL,
         subject: `Nuevo Registro de ${tipo}`,
-        text: `Nombre: ${nombre}\nApellido: ${apellido}\nEmail: ${email}\nFecha de Registro: ${new Date().toLocaleString()}`
+        text: `Nombre: ${nombre}\nApellido: ${apellido}\nEmail: ${email}\nFecha de Registro: ${new Date().toLocaleString()}`,
+        attachments: [
+            {
+                filename: archivo.originalname,
+                content: archivo.buffer
+            }
+        ]
     };
 
     transporter.sendMail(mailOptions, function(error, info) {
@@ -82,8 +93,9 @@ function enviarCorreoRegistro(tipo, nombre, apellido, email) {
     });
 }
 
-app.post('/api/enviarCorreoRegistro', (req, res) => {
+app.post('/api/enviarCorreoRegistro', upload.single('archivo'), (req, res) => {
     const { tipo, nombre, apellido, email } = req.body;
-    enviarCorreoRegistro(tipo, nombre, apellido, email);
+    const archivo = req.file;
+    enviarCorreoRegistro(tipo, nombre, apellido, email, archivo);
     res.status(200).send('Correo enviado');
 });
