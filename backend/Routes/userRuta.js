@@ -45,6 +45,7 @@ router.get('/empresas', empresaController.getEmpresas);
 router.put('/empresas/:nit', empresaController.updateEmpresa); 
 router.delete('/empresas/:id', empresaController.deleteEmpresa); 
 
+
 // Ruta para obtener todos los rubros
 router.get('/rubros', rubroController.getRubros);
 
