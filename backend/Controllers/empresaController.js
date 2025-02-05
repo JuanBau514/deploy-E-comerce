@@ -371,14 +371,34 @@ const createEmpresa = async (req, res) => {
 
 // Actualizar empresa
 const updateEmpresa = async (req, res) => {
+    let connection;
     try {
-        const { id, nit, razon_social, correo, telefono, id_rubro, cedula_representante_legal } = req.body;
-        const empresa = new Empresa(nit, razon_social, correo, telefono, id_rubro, cedula_representante_legal);
-        empresa.id = id;
-        await empresa.update();
+        const { nit } = req.params;
+        const { razon_social, correo, telefono, id_rubro, cedula_representante_legal } = req.body;
+
+        connection = await db.getConnection();
+        await connection.beginTransaction();
+
+        const updateEmpresaQuery = `
+            UPDATE empresa
+            SET razon_social = ?, correo = ?, telefono = ?, id_rubro = ?, cedula_representante_legal = ?
+            WHERE nit = ?
+        `;
+        const [result] = await connection.query(updateEmpresaQuery, [razon_social, correo, telefono, id_rubro, cedula_representante_legal, nit]);
+
+        if (result.affectedRows === 0) {
+            await connection.rollback();
+            return res.status(404).json({ message: 'Empresa no encontrada' });
+        }
+
+        await connection.commit();
         res.status(200).json({ message: 'Empresa actualizada con éxito' });
     } catch (error) {
+        if (connection) await connection.rollback();
+        console.error('Error al actualizar empresa:', error);
         res.status(500).json({ error: 'Error al actualizar empresa' });
+    } finally {
+        if (connection) connection.release();
     }
 };
 

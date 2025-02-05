@@ -42,8 +42,8 @@ router.post('/login', usuarioController.login);
 // Rutas de empresas
 router.post('/empresas', empresaController.createEmpresa); 
 router.get('/empresas', empresaController.getEmpresas);
-router.put('/empresas', empresaController.updateEmpresa);
-router.delete('/empresas/:id', empresaController.deleteEmpresa); // Asegúrate de que esta ruta esté correcta
+router.put('/empresas/:nit', empresaController.updateEmpresa); 
+router.delete('/empresas/:id', empresaController.deleteEmpresa); 
 
 // Ruta para obtener todos los rubros
 router.get('/rubros', rubroController.getRubros);
