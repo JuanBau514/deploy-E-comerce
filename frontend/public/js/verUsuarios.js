@@ -19,9 +19,15 @@ const creaFila = (id, nombre, apellido, correo, genero, id_rol, nit_empresa, raz
         <td>${id_rol}</td>
         <td>${nit_empresa}</td>
         <td>${razon_social}</td>
-        <td>
-            <span class="las la-trash btnEliminar" data-id="${id}" style="cursor: pointer;"></span>
-            <span class="las la-edit btnEditar" data-id="${id}" style="cursor: pointer; margin-left: 10px;"></span>
+        <td class="action-buttons">
+            <button class="btn btn-edit btnEditar" data-id="${id}">
+                <i class="las la-edit"></i>
+                Editar
+            </button>
+            <button class="btn btn-delete btnEliminar" data-id="${id}">
+                <i class="las la-trash-alt"></i>
+                Eliminar
+            </button>
         </td>
     `;
     return fila;
@@ -71,7 +77,7 @@ const agregarUsuariosTabla = (usuarios) => {
         button.addEventListener('click', (e) => {
             const id = e.target.getAttribute('data-id');
             // Redirigir a una página de edición con el ID del usuario
-            window.location.href = `/usuario_editar.html?id=${id}`;
+            window.location.href = `./usuario_editar.html?id=${id}`;
         });
     });
 }
@@ -142,13 +148,13 @@ window.onload = function() {
                         button.addEventListener('click', (e) => {
                             const id = e.target.getAttribute('data-id');
                             // Redirigir a una página de edición con el ID del usuario
-                            window.location.href = `/admin_usuarios/editarUsuario.html?id=${id}`;
+                            window.location.href = `./editarUsuario.html?id=${id}`;
                         });
                     });
 
                 } else {
                     alert("usuario NO encontrado");
-                    window.location.href = 'admin_usuarios/usuarios_ver.html';
+                    window.location.href = './usuarios_ver.html';
                 }
 
             });
