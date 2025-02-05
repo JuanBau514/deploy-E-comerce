@@ -42,26 +42,30 @@ const cargarDatosEmpresa = async () => {
   }
 };
 
-// Limpiar el localStorage después de completar la edición
 document.getElementById('formEditarEmpresa').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  
-  const datosEmpresa = {
-    razon_social: document.getElementById('razon_social').value,
-    correo: document.getElementById('correo').value,
-    telefono: document.getElementById('telefono').value,
-    id_rubro: document.getElementById('id_rubro').value,
-    cedula_representante_legal: document.getElementById('cedula_representante_legal').value
-  };
+    e.preventDefault();
+    
+    try {
+        const datosEmpresa = {
+            razon_social: document.getElementById('razon_social').value,
+            correo: document.getElementById('correo').value,
+            telefono: document.getElementById('telefono').value,
+            id_rubro: document.getElementById('id_rubro').value,
+            cedula_representante_legal: document.getElementById('cedula_representante_legal').value
+        };
 
-  try {
-    await actualizarEmpresa(datosEmpresa);
-    localStorage.removeItem('empresaNIT'); // Limpiar después de actualizar
-    alert('Empresa actualizada exitosamente');
-    window.location.href = 'empresas_ver.html';
-  } catch (error) {
-    alert('Error al actualizar la empresa: ' + error.message);
-  }
+        // Validar que la cédula del representante existe
+        if (!datosEmpresa.cedula_representante_legal) {
+            alert('La cédula del representante legal es requerida');
+            return;
+        }
+
+        await actualizarEmpresa(datosEmpresa);
+        alert('Empresa actualizada exitosamente');
+        window.location.href = 'empresas_ver.html';
+    } catch (error) {
+        alert('Error: ' + error.message);
+    }
 });
 
 // Ejecutar al cargar la página

@@ -373,30 +373,44 @@ const createEmpresa = async (req, res) => {
 const updateEmpresa = async (req, res) => {
     let connection;
     try {
+        connection = await db.getConnection();
         const { nit } = req.params;
         const { razon_social, correo, telefono, id_rubro, cedula_representante_legal } = req.body;
 
-        connection = await db.getConnection();
-        await connection.beginTransaction();
+        // Verificar si el usuario (representante legal) existe
+        const [usuario] = await connection.query(
+            'SELECT cedula FROM usuario WHERE cedula = ?',
+            [cedula_representante_legal]
+        );
 
-        const updateEmpresaQuery = `
-            UPDATE empresa
-            SET razon_social = ?, correo = ?, telefono = ?, id_rubro = ?, cedula_representante_legal = ?
-            WHERE nit = ?
-        `;
-        const [result] = await connection.query(updateEmpresaQuery, [razon_social, correo, telefono, id_rubro, cedula_representante_legal, nit]);
-
-        if (result.affectedRows === 0) {
-            await connection.rollback();
-            return res.status(404).json({ message: 'Empresa no encontrada' });
+        if (usuario.length === 0) {
+            return res.status(400).json({
+                status: 'error',
+                message: 'El representante legal no está registrado como usuario'
+            });
         }
 
-        await connection.commit();
-        res.status(200).json({ message: 'Empresa actualizada con éxito' });
+        // Actualizar empresa
+        await connection.query(
+            `UPDATE empresa
+             SET razon_social = ?, correo = ?, telefono = ?, 
+                 id_rubro = ?, cedula_representante_legal = ?
+             WHERE nit = ?`,
+            [razon_social, correo, telefono, id_rubro, cedula_representante_legal, nit]
+        );
+
+        res.status(200).json({
+            status: 'success',
+            message: 'Empresa actualizada correctamente'
+        });
+
     } catch (error) {
-        if (connection) await connection.rollback();
         console.error('Error al actualizar empresa:', error);
-        res.status(500).json({ error: 'Error al actualizar empresa' });
+        res.status(500).json({
+            status: 'error',
+            message: 'Error al actualizar la empresa',
+            error: error.message
+        });
     } finally {
         if (connection) connection.release();
     }
