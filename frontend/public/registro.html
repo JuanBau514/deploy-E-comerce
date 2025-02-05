@@ -26,49 +26,51 @@
                             <option value="empresa">Empresa</option>
                         </select>
                     </div>
-
+                     
                     <!-- Campos para Empresa -->
-                    <div id="camposEmpresa" style="display: none;">
-                        <div class="caja-entrada">
-                            <input type="text" class="entrada" id="razon_social" placeholder="Razón Social">
-                            <i class="bx bx-buildings"></i>
-                        </div>
-                        <div class="caja-entrada">
-                            <input type="text" class="entrada" id="nit" placeholder="NIT">
-                            <i class="bx bx-id-card"></i>
-                        </div>
-                        <div class="caja-entrada">
-                            <input type="text" class="entrada" id="telefono_empresa" placeholder="Teléfono">
-                            <i class="bx bx-phone"></i>
-                        </div>
-                        <div class="caja-entrada">
-                            <input type="email" class="entrada" id="email_empresa" placeholder="Correo Empresa">
-                            <i class="bx bx-envelope"></i>
-                        </div>
-                        <div class="caja-entrada">
-                            <label for="rubro">Seleccione el Rubro</label>
-                            <select id="rubro" class="entrada" name="id_rubro" required>
-                                <!-- Opciones cargadas dinámicamente -->
-                            </select>
-                            <i class="bx bx-store-alt"></i>
-                        </div>
-                        <div class="caja-entrada">
-                            <input type="text" class="entrada" id="nombre_representante" placeholder="Nombres Representante Legal">
-                            <i class="bx bx-user"></i>
-                        </div>
-                        <div class="caja-entrada">
-                            <input type="text" class="entrada" id="apellido_representante" placeholder="Apellidos Representante Legal">
-                            <i class="bx bx-user"></i>
-                        </div>
-                        <div class="caja-entrada">
-                            <input type="text" class="entrada" id="cedula_representante" placeholder="Cédula Representante Legal">
-                            <i class="bx bx-id-card"></i>
-                        </div>
+                        <div id="camposEmpresa" style="display: none;">
+                            <h1>Registro de Empresa</h1>
 
-                        <div class="caja-entrada" id="botonesRegistro">
-                            <button type="button" class="boton-enviar" id="boton-empresa" onclick="registrarEmpresa()">Registrarse como Empresa</button>
+                            <div class="caja-entrada">
+                                <input type="text" class="entrada" id="razon_social" placeholder="Razón Social">
+                                <i class="bx bx-buildings"></i>
+                            </div>
+                            <div class="caja-entrada">
+                                <input type="file" class="entrada" id="nit" placeholder="NIT">
+                                <i class="bx bx-id-card"></i>
+                            </div>
+                            <div class="caja-entrada">
+                                <input type="text" class="entrada" id="telefono_empresa" placeholder="Teléfono">
+                                <i class="bx bx-phone"></i>
+                            </div>
+                            <div class="caja-entrada">
+                                <input type="email" class="entrada" id="email_empresa" placeholder="Correo Empresa">
+                                <i class="bx bx-envelope"></i>
+                            </div>
+                            <div class="caja-entrada">
+                                <label for="rubro">Seleccione el Rubro</label>
+                                <select id="rubro" class="entrada" name="id_rubro" required>
+                                    <!-- Opciones cargadas dinámicamente -->
+                                </select>
+                                <i class="bx bx-store-alt"></i>
+                            </div>
+                            <div class="caja-entrada">
+                                <input type="text" class="entrada" id="nombre_representante" placeholder="Nombres Representante Legal">
+                                <i class="bx bx-user"></i>
+                            </div>
+                            <div class="caja-entrada">
+                                <input type="text" class="entrada" id="apellido_representante" placeholder="Apellidos Representante Legal">
+                                <i class="bx bx-user"></i>
+                            </div>
+                            <div class="caja-entrada">
+                                <input type="text" class="entrada" id="cedula_representante" placeholder="Cédula Representante Legal">
+                                <i class="bx bx-id-card"></i>
+                            </div>
+
+                            <div class="caja-entrada" id="botonesRegistro">
+                                <button type="button" class="boton-enviar" onclick="registrarEmpresa()">Registrarse como Empresa</button>
+                            </div>
                         </div>
-                    </div>
 
                     <div class="dos-columnas">
                         <div class="dos">

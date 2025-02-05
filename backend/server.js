@@ -4,7 +4,10 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import userRoutes from './Routes/userRuta.js';
 import empresaRoutes from './Routes/userRuta.js'; 
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const app = express();
 const port = process.env.PORT || 8080;
 
@@ -52,4 +55,35 @@ app.use('/api/empresa', empresaRoutes);
 
 app.listen(port, () => {
     console.log(`Servidor corriendo en el puerto ${port}`);
+});
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL,
+        pass: process.env.EMAIL_PASSWORD
+    }
+});
+
+function enviarCorreoRegistro(tipo, nombre, apellido, email) {
+    const mailOptions = {
+        from: process.env.EMAIL,
+        to: process.env.EMAIL,
+        subject: `Nuevo Registro de ${tipo}`,
+        text: `Nombre: ${nombre}\nApellido: ${apellido}\nEmail: ${email}\nFecha de Registro: ${new Date().toLocaleString()}`
+    };
+
+    transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+            console.log('Error al enviar el correo:', error);
+        } else {
+            console.log('Correo enviado:', info.response);
+        }
+    });
+}
+
+app.post('/api/enviarCorreoRegistro', (req, res) => {
+    const { tipo, nombre, apellido, email } = req.body;
+    enviarCorreoRegistro(tipo, nombre, apellido, email);
+    res.status(200).send('Correo enviado');
 });

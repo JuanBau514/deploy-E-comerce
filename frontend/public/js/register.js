@@ -103,77 +103,96 @@ async function registrarPersonaNatural() {
         'text/x-pdf'
     ];
 
-    // Validación de extensión del archivo como respaldo
-    const allowedExtensions = ['pdf', 'jpg', 'jpeg', 'png'];
-    const fileExtension = rutFile.name.split('.').pop().toLowerCase();
-
-    // Log para debug
-    console.log('Extensión del archivo:', fileExtension);
-    console.log('Tipo MIME:', rutFile.type);
-
-    if (!allowedTypes.includes(rutFile.type) && !allowedExtensions.includes(fileExtension)) {
-        alert('El archivo RUT debe ser PDF, JPEG o PNG.');
+    if (!allowedTypes.includes(rutFile.type)) {
+        alert('Por favor, suba un archivo válido (PDF, JPG, JPEG, PNG).');
         return;
     }
 
-    const formData = new FormData();
-    formData.append('nickname', nickname);
-    formData.append('lastname', lastname);
-    formData.append('email', email);
-    formData.append('rut', rutFile);
+    // Aquí iría el código para registrar a la persona natural en tu base de datos
 
-       try {
-        const response = await fetch("https://deploy-e-comerce-production.up.railway.app/api/users/registrarPersonaNatural", {
-            method: "POST",
-            mode: 'cors',
-            body: formData
-        });
+    // Enviar correo de notificación
+    await fetch('/api/enviarCorreoRegistro', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            tipo: 'Persona Natural',
+            nombre: nickname,
+            apellido: lastname,
+            email: email
+        })
+    });
 
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.message || 'Error en el servidor');
-        }
-
-        const data = await response.json();
-        alert("Registro exitoso. Hemos enviado un correo para validar tu informacion, pronto te contactaremos y te enviaremos credenciales para el registro.");
-        window.location.href = '/userPage.html';
-    } finally{
-         window.location.href = '/userPage.html';
-    }
+     alert('Usuario registrado vamos a validar tu usuario y luego te enviaremos un correo de confirmación');
+    window.location.href = './userPage.html';
 }
 
 async function registrarEmpresa() {
-    const empresaData = {
-        razon_social: document.getElementById('razon_social').value.trim(),
-        nit: document.getElementById('nit').value.trim(),
-        telefono_empresa: document.getElementById('telefono_empresa').value.trim(),
-        correo: document.getElementById('email_empresa').value.trim(),
-        id_rubro: document.getElementById('rubro').value,
-        representante: {
-            nombre: document.getElementById('nombre_representante').value.trim(),
-            apellido: document.getElementById('apellido_representante').value.trim(),
-            cedula: document.getElementById('cedula_representante').value.trim(),
-        }
-    };
+    const companyNameElement = document.getElementById('razon_social');
+    const companyEmailElement = document.getElementById('email_empresa');
+    const companyRutFileElement = document.getElementById('nit');
 
-    try {
-        const response = await fetch("https://deploy-e-comerce-production.up.railway.app/api/users/enviar-correo", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(empresaData)
-        });
-
-        if (response.status === 200) {
-            alert("Registro de empresa exitoso.");
-            window.location.href = '/userPage.html';
-        } else {
-            const errorData = await response.json();
-            throw new Error(errorData.message || 'Error en el servidor');
-        }
-    } catch (error) {
-        console.error("Error al enviar el correo:", error);
-        alert("Hubo un problema al enviar el correo.");
+    if (!companyNameElement || !companyEmailElement || !companyRutFileElement) {
+        alert('No se encontraron los elementos del formulario. Por favor, asegúrese de que todos los campos estén presentes.');
+        return;
     }
+
+    const companyName = companyNameElement.value.trim();
+    const companyEmail = companyEmailElement.value.trim();
+    const companyRutFile = companyRutFileElement.files[0];
+
+    // Log para debug
+    console.log('Tipo de archivo:', companyRutFile ? companyRutFile.type : 'No se seleccionó ningún archivo');
+
+    if (!companyName || !companyEmail || !companyRutFile) {
+        alert('Todos los campos son obligatorios.');
+        return;
+    }
+
+    // Validar formato de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(companyEmail)) {
+        alert('Por favor, ingrese un email válido.');
+        return;
+    }
+
+    // Lista expandida de tipos MIME aceptados
+    const allowedTypes = [
+        'application/pdf',
+        'image/jpeg',
+        'image/jpg',
+        'image/png',
+        // Variaciones comunes de PDF
+        'application/x-pdf',
+        'application/acrobat',
+        'applications/vnd.pdf',
+        'text/pdf',
+        'text/x-pdf'
+    ];
+
+    if (!allowedTypes.includes(companyRutFile.type)) {
+        alert('Por favor, suba un archivo válido (PDF, JPG, JPEG, PNG).');
+        return;
+    }
+
+    // Aquí iría el código para registrar a la empresa en tu base de datos
+
+    // Enviar correo de notificación
+    await fetch('/api/enviarCorreoRegistro', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            tipo: 'Empresa',
+            nombre: companyName,
+            apellido: '', // Las empresas no tienen apellido
+            email: companyEmail
+        })
+    });
+
+    // Redirigir a la página de usuario
+    alert('Empresa registrada. Vamos a validar tu usuario y luego te enviaremos un correo de confirmación.');
+    window.location.href = './userPage.html';
 }
