@@ -15,8 +15,11 @@ const agregar_datos = async ()=>{
   try{
      const respuesta = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/indicadorGeneral')
      const informacion = await respuesta.json();
-
+    
+    console.log(typeof informacion);
+    
     informacion.forEach((consulta,i)=>{
+      
       console.log(consulta);
       console.log(`Tipo de la estructura de datos : ${typeof consulta}`);
     })
