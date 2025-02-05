@@ -13,29 +13,33 @@ const creaFila = (codigo_producto, nombre, precio, cantidad, descripcion) => {
         <td>${cantidad}</td>
         <td>${descripcion}</td>
     `;
-
-    // Crear botón de eliminar
+    
     const eliminarBtn = document.createElement('button');
     eliminarBtn.textContent = 'Eliminar';
     eliminarBtn.addEventListener('click', async () => {
-       await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/productos',{
-        method:'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ codigo_producto })
-       }).then((response)=>{
-        alert('producto eliminado correctamente')
-        window.location.href = './admin_productos/productos_eliminar.html';
-       }).catch((error)=>{
-        alert('Hubo un error')
-       })
+        if (confirm('¿Está seguro de eliminar este producto?')) {
+            try {
+                const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/productos', {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ codigo_producto })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error al eliminar el producto');
+                }
+
+                alert('Producto eliminado correctamente');
+                // Eliminar la fila de la tabla
+                eliminarBtn.closest('tr').remove();
+
+            } catch (error) {
+                alert('Error: ' + error.message);
+                console.error(error);
+            }
+        }
     });
 
-    // Agregar botón de eliminar a la última celda de la fila
-    const celdaEliminar = document.createElement('td');
-    celdaEliminar.appendChild(eliminarBtn);
-    fila.appendChild(celdaEliminar);
-
-    return fila;
 };
 
 const agregarProductoTabla = (productos) => {
@@ -81,8 +85,6 @@ window.onload = async function() {
     } catch (error) {
         alert(`Hubo un error ${error}`);
     }
-
-
 
 };
 

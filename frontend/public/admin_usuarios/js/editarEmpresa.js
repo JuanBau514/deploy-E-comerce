@@ -1,11 +1,18 @@
 const actualizarEmpresa = async (datosEmpresa) => {
   try {
-    // Obtener el NIT desde localStorage
     const nit = localStorage.getItem('empresaNIT');
     
     if (!nit) {
       throw new Error('NIT de empresa no encontrado');
     }
+
+    // Validar datos requeridos
+    if (!datosEmpresa.razon_social || !datosEmpresa.correo || !datosEmpresa.cedula_representante_legal) {
+      throw new Error('Todos los campos requeridos deben estar completos');
+    }
+
+    // Log para debug
+    console.log('Datos a enviar:', datosEmpresa);
 
     const response = await fetch(`https://deploy-e-comerce-production.up.railway.app/api/users/empresas/${nit}`, {
       method: 'PUT',
@@ -17,56 +24,46 @@ const actualizarEmpresa = async (datosEmpresa) => {
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const errorData = await response.json();
+      throw new Error(errorData.message || `Error ${response.status}: ${response.statusText}`);
     }
 
     const data = await response.json();
     return data;
 
   } catch (error) {
-    console.error('Error al actualizar la empresa:', error);
+    console.error('Error completo:', error);
     throw error;
   }
 }
-
-// Cargar datos iniciales de la empresa
-const cargarDatosEmpresa = async () => {
-  const nit = localStorage.getItem('empresaNIT');
-  
-  if (nit) {
-    document.getElementById('nit').value = nit;
-    // Aquí puedes agregar la lógica para cargar los datos existentes de la empresa
-  } else {
-    alert('No se encontró el NIT de la empresa');
-    window.location.href = 'empresas_ver.html';
-  }
-};
 
 document.getElementById('formEditarEmpresa').addEventListener('submit', async (e) => {
     e.preventDefault();
     
     try {
         const datosEmpresa = {
-            razon_social: document.getElementById('razon_social').value,
-            correo: document.getElementById('correo').value,
-            telefono: document.getElementById('telefono').value,
-            id_rubro: document.getElementById('id_rubro').value,
-            cedula_representante_legal: document.getElementById('cedula_representante_legal').value
+            razon_social: document.getElementById('razon_social').value.trim(),
+            correo: document.getElementById('correo').value.trim(),
+            telefono: document.getElementById('telefono').value.trim(),
+            id_rubro: document.getElementById('id_rubro').value.trim(),
+            cedula_representante_legal: document.getElementById('cedula_representante_legal').value.trim()
         };
 
-        // Validar que la cédula del representante existe
-        if (!datosEmpresa.cedula_representante_legal) {
-            alert('La cédula del representante legal es requerida');
+        // Validación de campos
+        const camposRequeridos = ['razon_social', 'correo', 'cedula_representante_legal', 'id_rubro'];
+        const camposFaltantes = camposRequeridos.filter(campo => !datosEmpresa[campo]);
+        
+        if (camposFaltantes.length > 0) {
+            alert(`Los siguientes campos son requeridos: ${camposFaltantes.join(', ')}`);
             return;
         }
 
-        await actualizarEmpresa(datosEmpresa);
+        const resultado = await actualizarEmpresa(datosEmpresa);
+        console.log('Respuesta del servidor:', resultado);
+        
         alert('Empresa actualizada exitosamente');
         window.location.href = 'empresas_ver.html';
     } catch (error) {
-        alert('Error: ' + error.message);
+        alert('Error al actualizar: ' + error.message);
     }
 });
-
-// Ejecutar al cargar la página
-document.addEventListener('DOMContentLoaded', cargarDatosEmpresa);

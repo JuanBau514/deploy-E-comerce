@@ -51,19 +51,15 @@ const updateProducto = async (req, res) => {
     }
 };
 
-const deleteProducto = async (req, res) => {
-    const { codigo_producto } = req.body;
-    try {
-        await Producto.delete(codigo_producto);
-        res.status(200).json('Producto eliminado');
-    } catch (error) {
-        res.status(500).json('No se pudo eliminar el producto', error);
-    }
-};
-
 const crearProducto = async (req, res) => {
     try {
         const { codigo_producto, nombre, descripcion, cantidad_disponible, precio, url_imagen, estado } = req.body;
+        
+        // Validaciones
+        if (!codigo_producto || !nombre || !precio || !cantidad_disponible) {
+            return res.status(400).json({ error: 'Faltan campos requeridos' });
+        }
+
         await Producto.create(
             codigo_producto,
             nombre,
@@ -73,12 +69,31 @@ const crearProducto = async (req, res) => {
             cantidad_disponible,
             estado
         );
-        res.status(200).json('Producto creado correctamente');
+        res.status(201).json({ message: 'Producto creado correctamente' });
     } catch (error) {
-        res.status(500).json('No se pudo crear el producto', error);
+        console.error('Error al crear producto:', error);
+        res.status(500).json({ error: 'Error al crear el producto' });
     }
 };
 
+const deleteProducto = async (req, res) => {
+    try {
+        const { codigo_producto } = req.body;
+        if (!codigo_producto) {
+            return res.status(400).json({ error: 'Código de producto requerido' });
+        }
+
+        const result = await Producto.delete(codigo_producto);
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ error: 'Producto no encontrado' });
+        }
+
+        res.status(200).json({ message: 'Producto eliminado correctamente' });
+    } catch (error) {
+        console.error('Error al eliminar producto:', error);
+        res.status(500).json({ error: 'Error al eliminar el producto' });
+    }
+};
 export default {
     getProductos,
     asignarProductoEditar,

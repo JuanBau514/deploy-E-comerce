@@ -45,18 +45,21 @@ window.onload = async function() {
     });
 
     document.querySelector('form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-
+    e.preventDefault();
+    try {
         const nombre = campoNombre.value;
         const descripcion = campoDescripcion.value;
         const cantidad_disponible = campoCantidad.value;
         const precio = campoPrecio.value;
         const url_imagen = previa.src || "";
+        const id_estado = [...camposEstado].find(radio => radio.checked)?.value || "1";
 
-        // Obtener el valor del estado seleccionado
-        const id_estado = [...camposEstado].find(radio => radio.checked)?.value || "1"; // Por defecto 'activo'
+        if (!nombre || !precio || !cantidad_disponible) {
+            alert('Por favor complete todos los campos requeridos');
+            return;
+        }
 
-        fetch('https://deploy-e-comerce-production.up.railway.app/api/users/productos', {
+        const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/productos', {
             method: "PUT",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -65,12 +68,22 @@ window.onload = async function() {
                 cantidad_disponible,
                 precio,
                 url_imagen,
-                id_estado // Incluir el estado en el cuerpo de la solicitud
+                id_estado
             })
-        })
-        alert('ARTICULO MODIFIED');
-        window.location.href = "./productos_ver.html";      
-    });
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al actualizar el producto');
+        }
+
+        alert('Producto actualizado correctamente');
+        window.location.href = "./productos_ver.html";
+
+    } catch (error) {
+        alert('Error: ' + error.message);
+        console.error(error);
+    }
+});
 
     campoImagen.addEventListener('input', async () => {
         const file = campoImagen.files[0];
