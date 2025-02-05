@@ -21,38 +21,52 @@ function mostrarCampos() {
         }
     });
 
-document.addEventListener('DOMContentLoaded', cargarRubros);
-
 async function cargarRubros() {
     try {
-        const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api//users/rubros');
-        const rubros = await response.json();
-        const rubrosArray = rubros[0];
+        const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/rubros');
+        const data = await response.json();
+        
+        if (data.success && Array.isArray(data.data)) {
+            const rubrosArray = data.data;
 
-        const rubroSelect = document.getElementById('rubro');
-        if (rubroSelect) {
-            rubroSelect.innerHTML = ''; // Limpia opciones anteriores
+            const rubroSelect = document.getElementById('rubro');
+            if (rubroSelect) {
+                rubroSelect.innerHTML = ''; // Limpia opciones anteriores
 
-            // Agrega la opción de selección predeterminada
-            const defaultOption = document.createElement('option');
-            defaultOption.value = "";
-            defaultOption.textContent = "Seleccione el Rubro";
-            rubroSelect.appendChild(defaultOption);
+                // Agrega la opción de selección predeterminada
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Seleccione el Rubro";
+                rubroSelect.appendChild(defaultOption);
 
-            // Agrega las opciones de rubro dinámicamente
-            rubrosArray.forEach(rubro => {
-                const option = document.createElement('option');
-                option.value = rubro.id_rubro;
-                option.textContent = rubro.rubro;
-                rubroSelect.appendChild(option);
-            });
+                // Agrega las opciones de rubro dinámicamente
+                rubrosArray.forEach(rubro => {
+                    const option = document.createElement('option');
+                    option.value = rubro.id_rubro;
+                    option.textContent = rubro.rubro;
+                    rubroSelect.appendChild(option);
+                });
+            } else {
+                console.error('No se encontró el elemento con ID "rubro"');
+            }
         } else {
-            console.error('No se encontró el elemento con ID "rubro"');
+            console.error('La respuesta del servidor no contiene datos válidos');
         }
     } catch (error) {
         console.error('Error al cargar los rubros:', error);
     }
 }
+
+function redireccionarRegistro() {
+    const tipoUsuario = document.getElementById("tipoUsuario").value;
+    if (tipoUsuario === "natural") {
+        window.location.href = "./registrol.html";
+    } else if (tipoUsuario === "empresa") {
+        document.getElementById("camposEmpresa").style.display = "block";
+    }
+}
+
+document.addEventListener('DOMContentLoaded', cargarRubros);
 
 async function registrarPersonaNatural() {
     const nickname = document.getElementById('nombre').value.trim();

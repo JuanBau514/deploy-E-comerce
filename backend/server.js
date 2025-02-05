@@ -27,7 +27,12 @@ const corsOptions = {
 app.use((req, res, next) => {
     res.setHeader(
         'Content-Security-Policy',
-        "default-src 'self'; font-src 'self' data: https: fonts.gstatic.com; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:;"
+        "default-src 'self'; " +
+        "font-src 'self' https://fonts.gstatic.com https://unpkg.com; " +
+        "style-src 'self' 'unsafe-inline' https://unpkg.com https://fonts.googleapis.com; " +
+        "img-src 'self' data: https:; " +
+        "connect-src 'self' https://deploy-e-comerce-production.up.railway.app; " +
+        "script-src 'self' 'unsafe-inline';"
     );
     next();
 });

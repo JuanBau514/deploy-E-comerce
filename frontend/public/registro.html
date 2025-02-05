@@ -81,17 +81,5 @@
     </div>
 
     <script src="./js/register.js"></script>
-    <script>
-        function redireccionarRegistro() {
-            const tipoUsuario = document.getElementById("tipoUsuario").value;
-            if (tipoUsuario === "natural") {
-                // Redirige a registrol.html para el registro de personas naturales
-                window.location.href = "./registrol.html";
-            } else if (tipoUsuario === "empresa") {
-                // Muestra el formulario de empresa en la misma página
-                document.getElementById("camposEmpresa").style.display = "block";
-            }
-        }
-    </script>
 </body>
 </html>
