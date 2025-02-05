@@ -20,7 +20,8 @@ const agregar_datos = async ()=>{
 
     for(const consulta in informacion)
     {
-      console.log(consulta);
+      console.log(`Consulta : ${consulta}`);
+      console.log(`Contenido : ${informacion[consulta]}`);
     }
     
   }
