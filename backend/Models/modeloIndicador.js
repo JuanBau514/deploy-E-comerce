@@ -101,6 +101,29 @@ class Indicador {
         }
     }
 
+    static async realizarReporte(){
+        try {
+            const connection = await db.getConnection();
+            const [result] = await connection.query(
+                `SELECT  p.id_pedido, sum(cantidad), min(fecha) 'FECHA DE CAUSACION', u.cedula, u.nombre, min(d.direccion), u.correo
+                from pedido p natural JOIN pedido_producto
+                    NATURAL JOIN producto
+                    INNER JOIN factura f
+                        on (p.id_pedido = f.id_pedido)
+                    INNER JOIN usuario u
+                        ON (p.cedula_usuario = u.cedula)
+                    left JOIN direccion d
+                        ON (d.cedula_usuario = u.cedula)
+                GROUP BY id_pedido;
+                `,[mes,anio])
+            connection.release();
+            return result[0].total;
+        } catch (error) {
+            throw error;
+        }          
+    }
+
+
 }
 
 export default Indicador;
