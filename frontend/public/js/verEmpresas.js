@@ -60,3 +60,6 @@ async function eliminarEmpresa(nit) {
 
 // Cargar las empresas al cargar la página
 window.onload = cargarEmpresas;
+
+// Cargar las empresas al cargar la página
+window.onload = cargarEmpresas;
