@@ -17,10 +17,11 @@ const agregar_datos = async ()=>{
      const informacion = await respuesta.json();
 
     console.log(typeof informacion);
-    
-      informacion.forEach((consulta,i)=>{
-        console.log(consulta[i]);
-      })
+
+    for(const consulta in informacion)
+    {
+      console.log(consulta);
+    }
     
   }
   catch(error){
