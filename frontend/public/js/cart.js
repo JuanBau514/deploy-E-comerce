@@ -94,11 +94,54 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Event listener para el botón de checkout
     if (checkoutButton) {
-        checkoutButton.addEventListener('click', function() {
-            alert('Procediendo al pago...');
-            // lógica para el proceso de pago
-        });
-    }
+    checkoutButton.addEventListener('click', async function() {
+        try {
+            const cedula_usuario = localStorage.getItem('cedula');
+            
+            if (!cedula_usuario) {
+                alert('Debe iniciar sesión para realizar la compra');
+                window.location.href = './login.html';
+                return;
+            }
+
+            // Calcular total
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            // Corregir la URL para que apunte a la ruta correcta
+            const response = await fetch('/api/users/pedidos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    cedula_usuario: parseInt(cedula_usuario),
+                    productos: cart,
+                    total: total
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            if (data.success) {
+                alert('¡Compra realizada con éxito!');
+                localStorage.removeItem('cart');
+                cart = [];
+                updateCart();
+            } else {
+                throw new Error(data.message);
+            }
+
+        } catch (error) {
+            console.error('Error detallado:', error);
+            alert('Error al procesar el pago. Por favor, intente nuevamente.');
+        }
+    });
+}
 
     // Event listener para el botón de logout
     if (logoutButton) {

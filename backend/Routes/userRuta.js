@@ -5,6 +5,8 @@ import productoController from '../Controllers/productoController.js';
 import rubroController from '../Controllers/rubroController.js';
 import rolesController from '../Controllers/rolController.js';
 import indicadorController from '../Controllers/indicadorController.js';
+import pedidoController from '../Controllers/pedidoController.js';
+
 import multer from 'multer';
 
 const upload = multer({ dest: '../uploads' }); // Directorio temporal para archivos
@@ -50,7 +52,16 @@ router.delete('/empresas/:id', empresaController.deleteEmpresa);
 router.get('/rubros', rubroController.getRubros);
 
 // Ruta para obtener los datos de los indicadores
-router.get('/indicadorGeneral', indicadorController.obtenerInformacion);
-router.get('/indicadorEspecifico', indicadorController.obtenerReporte);
+router.get('/indicadores', indicadorController.obtenerIndicadores);
+router.get('/indicadores/pedidos', indicadorController.obtenerTotalPedidos);
+router.get('/indicadores/clientes', indicadorController.obtenerTotalClientes);
+router.get('/indicadores/administradores', indicadorController.obtenerTotalAdministradores);
+router.get('/indicadores/productos', indicadorController.obtenerTotalProductos);
+
+
+// Rutas para pedidos y pagos
+router.post('/pedidos', pedidoController.crearPedido);
+router.get('/pedidos', pedidoController.getPedidos);
+
 
 export default router;

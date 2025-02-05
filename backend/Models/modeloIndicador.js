@@ -1,43 +1,106 @@
 import db from './conection.js';
 
-class Indicador{
-    constructor(numeroProductos, numeroClientes, numeroAdministradores,pedidosRealizados){
-        this.numeroProductos = numeroProductos;
-        this.numeroClientes = numeroClientes;
-        this.numeroAdministradores = numeroAdministradores;
-        this.pedidosRealizados = pedidosRealizados;
-    }
-    static async realizarConsulta (){
-    
-       // const query = 'SELECT COUNT(*) FROM producto'
-        return  await db.query(`
-        SELECT COUNT(*) FROM producto;
-        SELECT COUNT(*) FROM usuario WHERE id_rol = 2;
-        SELECT COUNT(*) FROM usuario WHERE id_rol=1;
-        SELECT COUNT(*) FROM factura;
-        `);
+class Indicador {
 
+     static async obtenerTodosIndicadores() {
+        const connection = await db.getConnection();
+        try {
+            // Clientes (usuarios con rol_id != 1)
+            const [clientes] = await connection.query(
+                'SELECT COUNT(*) as total FROM usuario WHERE rol_id != 1'
+            );
+
+            // Administradores (usuarios con rol_id = 1)
+            const [admins] = await connection.query(
+                'SELECT COUNT(*) as total FROM usuario WHERE rol_id = 1'
+            );
+
+            // Productos
+            const [productos] = await connection.query(
+                'SELECT COUNT(*) as total, SUM(cantidad_disponible) as stock FROM producto'
+            );
+
+            // Pedidos
+            const [pedidos] = await connection.query(
+                'SELECT COUNT(*) as total, SUM(total) as ventas_totales FROM pedido p JOIN factura f ON p.id_pedido = f.id_pedido'
+            );
+
+            return {
+                success: true,
+                data: {
+                    clientes: clientes[0].total,
+                    administradores: admins[0].total,
+                    productos: {
+                        total: productos[0].total,
+                        stock: productos[0].stock || 0
+                    },
+                    pedidos: {
+                        total: pedidos[0].total,
+                        ventas_totales: pedidos[0].ventas_totales || 0
+                    }
+                }
+            };
+        } catch (error) {
+            throw error;
+        } finally {
+            connection.release();
+        }
     }
-    static async realizarReporte (mes,annio)
-    {
-        const consultas = 
-        {
-            "Cantidad_usuarios": "Select count(*) from usuario",
-            "Gente": "SELECT * FROM usuario",
-            "cantidad_productos": "Select count(*) from producto",
-            "productos": "Select * from producto",
+
+    static async obtenerTotalClientes() {
+        try {
+            const connection = await db.getConnection();
+            const [result] = await connection.query(
+                'SELECT COUNT(*) as total FROM usuario WHERE rol_id != 1'
+            );
+            connection.release();
+            return result[0].total;
+        } catch (error) {
+            throw error;
         }
-        const resultados = {}
-        for( const consulta in consultas){
-             resultados.consulta = await db.query(consultas[consulta]);            
-        }
-        for( const resultado in resultados)
-        {
-            console.log(`Resultado de la consulta:  ${resultados[resultado]}`)
-        }
-        return resultados;
     }
-    
+
+    static async obtenerTotalAdministradores() {
+        try {
+            const connection = await db.getConnection();
+            const [result] = await connection.query(
+                'SELECT COUNT(*) as total FROM usuario WHERE rol_id = 1'
+            );
+            connection.release();
+            return result[0].total;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    static async obtenerTotalProductos() {
+        try {
+            const connection = await db.getConnection();
+            const [result] = await connection.query(
+                'SELECT COUNT(*) as total FROM producto'
+            );
+            connection.release();
+            return result[0].total;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    static async obtenerPedidosUltimoMes() {
+        try {
+            const connection = await db.getConnection();
+            const [result] = await connection.query(
+                `SELECT COUNT(*) as total FROM pedido 
+                 WHERE MONTH(fecha_pedido) = MONTH(CURRENT_DATE()) 
+                 AND YEAR(fecha_pedido) = YEAR(CURRENT_DATE())`
+            );
+            connection.release();
+            return result[0].total;
+        } catch (error) {
+            throw error;
+        }
+    }
+
 }
-//
+
 export default Indicador;

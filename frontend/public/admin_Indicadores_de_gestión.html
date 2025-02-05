@@ -4,9 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self' https://deploy-e-comerce-production.up.railway.app;
+        style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://maxst.icons8.com;
+        script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;
+        img-src 'self' data: https:;
+        connect-src 'self' https://deploy-e-comerce-production.up.railway.app;
+        font-src 'self' https://maxst.icons8.com;
+    ">
+    <title>Indicadores de Gestión</title>
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/select.css">
-    <title>Estudiante Dashboard</title>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         select {
     padding: 10px;
@@ -164,19 +175,6 @@ button:hover {
                         <option value="12">Diciembre</option>
                     </select>
     
-                    <!-- Selector de Año -->
-                    <select id="yearSelector" style="select {
-                        padding: 10px;
-                        margin: 10px;
-                        border-radius: 5px;
-                        border: 1px solid #ddd;
-                        font-size: 16px;
-                        outline: none;
-                    }
-                    " >
-                        <option value="">Año</option>
-                    </select>
-    
                     <!-- Botón para generar reporte -->
                     <button  class="boton_generarReporte">Generar Reporte</button>
                     <button class="exportarReporte">
@@ -192,7 +190,7 @@ button:hover {
                             <div class="card-head">    
                                 <small>PRODUCTOS EN INVENTARIOS</small>
                             </div>
-                            <h2 class="valor valor__inventarios">10</h2>
+                            <h2 class="valor valor__inventarios"></h2>
                             <small>PRODUCTOS EN STOCK</small>
                         </div>
                         <div class="card-chart danger">
@@ -208,7 +206,7 @@ button:hover {
                                 
                                 <small>NUMERO DE CLIENTES</small>
                             </div>
-                            <h2 class="valor valor__clientes">75</h2>
+                            <h2 class="valor valor__clientes"></h2>
                             <small>Clientes registrados</small>
                         </div>
                         <div class="card-chart success">
@@ -224,7 +222,7 @@ button:hover {
                                 
                                 <small>NUMERO DE ADMINISTRADORES</small>
                             </div>
-                            <h2 class="valor__administradores">3</h2>
+                            <h2 class="valor__administradores"></h2>
                             <small>Administradores registrados en la plataforma</small>
                         </div>
                         <div class="card-chart success">
@@ -240,7 +238,7 @@ button:hover {
                                 
                                 <small>PEDIDOS REALIZADOS EL ULTIMO MES</small>
                             </div>
-                            <h2 class="valor valor__pedidos">730</h2>
+                            <h2 class="valor valor__pedidos"> </h2>
                             <small>Ventas registradas en la plataforma</small>
                         </div>
                         <div class="card-chart warning">
@@ -257,9 +255,7 @@ button:hover {
             </div>
         </main>
     </div>
-    <script></script>
-    <script src="../js/dashboard.js"></script>
-    <script src="../js/select.js"></script>
-    <script type="module" src="../js/indicadores_gestion.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="./js/indicadores_gestion.js"></script>
 </body>
 </html>
