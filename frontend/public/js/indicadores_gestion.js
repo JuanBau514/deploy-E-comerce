@@ -6,7 +6,6 @@ const panel_cantidad_pedidos = document.querySelector('.valor__pedidos')
 const boton_generar_reporte = document.querySelector('.boton_generarReporte');
 const exportar_reporte = document.querySelector('.exportarReporte');
 
-
 panel_cantidad_administradores.textContent = 'Prueba';
   panel_cantidad_clientes.textContent = 'Prueba';
   panel_cantidad_inventarios.textContent = 'Prueba';
@@ -16,7 +15,10 @@ const agregar_datos = async ()=>{
   try{
      const respuesta = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/indicadorGeneral')
      const informacion = await respuesta.json();
-      console.log(informacion);
+      //console.log(informacion);
+    informacion.forEach((consulta)=>{
+      console.log(consulta)
+    })
   }
   catch(error){
     console.log(error);
