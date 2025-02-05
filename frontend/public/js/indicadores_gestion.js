@@ -14,15 +14,14 @@ panel_cantidad_administradores.textContent = 'Prueba';
 const agregar_datos = async ()=>{
   try{
      const respuesta = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/indicadorGeneral')
-     let informacion = await respuesta.json();
-     informacion = [...informacion];
-    console.log(typeof informacion);
+     const informacion = await respuesta.json();
 
-    for(const consulta in informacion)
-    {
-      console.log(`Consulta : ${consulta}`);
-      console.log(`Contenido : ${informacion[consulta]}`);
-    }
+    informacion.forEach((consulta,i)=>{
+      console.log(consulta);
+      console.log(`Tipo de la estructura de datos : ${typeof consulta}`);
+    })
+
+    
     
   }
   catch(error){
