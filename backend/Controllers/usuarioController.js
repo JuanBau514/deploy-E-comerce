@@ -174,57 +174,19 @@ const getUsuarios = async (req, res) => {
     }
 };
 
+// Modificar updateUsuario para usar el nuevo método
 const updateUsuario = async (req, res) => {
     try {
-        const { cedula, nombre, apellido, correo, telefono, id_genero, nit_empresa, contrasenaNueva } = req.body;
+        const userData = req.body;
         
-        if (!cedula || !nombre || !apellido || !correo) {
+        if (!userData.cedula) {
             return res.status(400).json({ 
                 success: false, 
-                message: 'Faltan campos requeridos' 
+                message: 'Cédula es requerida' 
             });
         }
 
-        console.log('Actualizando usuario:', { cedula, nombre, apellido, correo });
-        
-        const usuario = await Usuario.findByCedula(cedula);
-        
-        if (!usuario) {
-            return res.status(404).json({ 
-                success: false, 
-                message: 'Usuario no encontrado' 
-            });
-        }
-
-        let queryParams = [
-            nombre,
-            apellido,
-            correo,
-            telefono || null,
-            id_genero || usuario.id_genero,
-            nit_empresa || null
-        ];
-
-        let query = `
-            UPDATE usuario 
-            SET nombre = ?, 
-                apellido = ?, 
-                correo = ?, 
-                telefono = ?,
-                id_genero = ?,
-                nit_empresa = ?
-        `;
-
-        if (contrasenaNueva) {
-            const hashedPassword = await bcrypt.hash(contrasenaNueva, 10);
-            query += `, contraseña = ?`;
-            queryParams.push(hashedPassword);
-        }
-
-        query += ` WHERE cedula = ?`;
-        queryParams.push(cedula);
-
-        await db.query(query, queryParams);
+        await Usuario.update(userData);
 
         res.status(200).json({ 
             success: true,

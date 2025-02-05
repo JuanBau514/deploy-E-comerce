@@ -51,23 +51,30 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    // Manejar envío del formulario
     document.getElementById('formEditarUsuario').addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const usuarioId = document.getElementById('usuarioId').value;
         const userData = {
+            cedula: usuarioId, // Agregar la cédula al objeto
             nombre: document.getElementById('nombre').value,
             apellido: document.getElementById('apellido').value,
             correo: document.getElementById('correo').value,
             genero: document.getElementById('genero').value,
-            rol: rolSelect.value,
+            rol: parseInt(rolSelect.value),
             nit_empresa: document.getElementById('nit_empresa').value || null,
             razon_social: document.getElementById('razon_social').value || null
         };
 
+        // Validación
+        if (!userData.nombre || !userData.apellido || !userData.correo || !userData.genero || !userData.rol) {
+            alert('Por favor complete todos los campos obligatorios');
+            return;
+        }
+
         try {
-            const response = await fetch(`https://deploy-e-comerce-production.up.railway.app/api/users/usuarios/${usuarioId}`, {
+            // Cambiar la ruta y método
+            const response = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/usuarios', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -75,16 +82,22 @@ document.addEventListener('DOMContentLoaded', async () => {
                 body: JSON.stringify(userData)
             });
 
-            if (response.ok) {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const responseData = await response.json();
+
+            if (responseData.success) {
                 alert('Usuario actualizado correctamente');
                 window.location.href = './usuarios_ver.html';
             } else {
-                const errorData = await response.json();
-                alert(`Error al actualizar: ${errorData.message || 'Error desconocido'}`);
+                throw new Error(responseData.message || 'Error al actualizar usuario');
             }
         } catch (error) {
-            console.error('Error:', error);
-            alert('Error al actualizar usuario');
+            console.error('Error en la actualización:', error);
+            alert(`Error al actualizar usuario: ${error.message}`);
         }
     });
+
 });

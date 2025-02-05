@@ -59,6 +59,34 @@ class Usuario {
         }
     }
 
+    // Agregar método para actualizar usuario
+    static async update(userData) {
+        const query = `
+            UPDATE usuario 
+            SET nombre = ?, 
+                apellido = ?, 
+                correo = ?, 
+                id_genero = ?,
+                telefono = ?,
+                nit_empresa = ?,
+                id_rol = ?
+            WHERE cedula = ?
+        `;
+        
+        const params = [
+            userData.nombre,
+            userData.apellido,
+            userData.correo,
+            userData.id_genero,
+            userData.telefono,
+            userData.nit_empresa,
+            userData.rol,
+            userData.cedula
+        ];
+
+        return db.query(query, params);
+    }
+
     // Método getAll en el modelo Usuario
     static async getAll() {
     try {
