@@ -15,11 +15,11 @@ const agregar_datos = async ()=>{
   try{
      const respuesta = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/indicadorGeneral')
      const informacion = await respuesta.json();
+
+      informacion.forEach((consulta,i)=>{
+        console.log(consulta);
+      })
     
-   for(let consulta of informacion)
-   {
-     console.log(consulta);
-   }
   }
   catch(error){
     console.log(error);
