@@ -50,7 +50,7 @@ router.get('/rubros', rubroController.getRubros);
 
 
 // Ruta para obtener los datos de los indicadores
-router.post('/indicadorGeneral', indicadorController.obtenerInformacion);
+router.get('/indicadorGeneral', indicadorController.obtenerInformacion);
 router.get('/indicadorEspecifico', indicadorController.obtenerReporte);
 
 export default router;
