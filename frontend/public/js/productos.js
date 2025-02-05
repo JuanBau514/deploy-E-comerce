@@ -63,7 +63,7 @@ function crearProducto(codigo_producto, nombre,descripcion,precio,cantidad_dispo
             body: JSON.stringify({ codigo_producto })
         });
 
-        window.location.href = './admin_productos/productos_modificar.html';
+        window.location.href = './productos_modificar.html';
     };
 
     // Agregar elementos al contenedor principal

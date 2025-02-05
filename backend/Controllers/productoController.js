@@ -83,6 +83,18 @@ const deleteProducto = async (req, res) => {
             return res.status(400).json({ error: 'Código de producto requerido' });
         }
 
+        // Verificar si el producto tiene pedidos asociados
+        const [rows] = await db.query(
+            'SELECT COUNT(*) as count FROM pedido_producto WHERE codigo_producto = ?', 
+            [codigo_producto]
+        );
+
+        if (rows[0].count > 0) {
+            return res.status(400).json({ 
+                error: 'No se puede eliminar el producto porque tiene pedidos asociados. Por favor, márquelo como inactivo primero.' 
+            });
+        }
+
         const result = await Producto.delete(codigo_producto);
         if (result.affectedRows === 0) {
             return res.status(404).json({ error: 'Producto no encontrado' });
@@ -94,6 +106,7 @@ const deleteProducto = async (req, res) => {
         res.status(500).json({ error: 'Error al eliminar el producto' });
     }
 };
+
 export default {
     getProductos,
     asignarProductoEditar,

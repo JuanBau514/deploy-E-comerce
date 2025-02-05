@@ -1,3 +1,7 @@
+import window from 'jsdom';
+import { jsPDF } from 'jspdf';
+import jsPDF from 'jspdf';
+
 document.addEventListener('DOMContentLoaded', async function() {
     // Referencias a elementos del DOM
     const valorProductos = document.querySelector('.valor__inventarios');
@@ -141,9 +145,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Event Listeners
     document.querySelector('.boton_generarReporte').addEventListener('click', generarReportePDF);
     document.querySelector('.exportarReporte').addEventListener('click', exportarExcel);
-
-    
- 
 
     // Inicializar el dashboard
     actualizarDashboard();
