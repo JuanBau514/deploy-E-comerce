@@ -6,25 +6,21 @@ const panel_cantidad_pedidos = document.querySelector('.valor__pedidos')
 const boton_generar_reporte = document.querySelector('.boton_generarReporte');
 const exportar_reporte = document.querySelector('.exportarReporte');
 
-panel_cantidad_administradores.textContent = 'Prueba';
-  panel_cantidad_clientes.textContent = 'Prueba';
-  panel_cantidad_inventarios.textContent = 'Prueba';
-  panel_cantidad_pedidos.textContent = 'Prueba'; 
+
 
 const agregar_datos = async ()=>{
   try{
      const respuesta = await fetch('https://deploy-e-comerce-production.up.railway.app/api/users/indicadorGeneral')
-     const informacion = await respuesta.json();
-    
-    console.log(typeof informacion);
-    
-    informacion.forEach((consulta,i)=>{
-      
-      console.log(consulta);
-      console.log(`Tipo de la estructura de datos : ${typeof consulta}`);
-    })
+     const data = await respuesta.json();
 
+    const informacion = data[0];
+
+    console.log(informacion)
     
+    panel_cantidad_administradores.textContent = 'Prueba';
+    panel_cantidad_clientes.textContent = 'Prueba';
+    panel_cantidad_inventarios.textContent = 'Prueba';
+    panel_cantidad_pedidos.textContent = 'Prueba'; 
     
   }
   catch(error){
