@@ -16,8 +16,8 @@ async function cargarEmpresas() {
                 <td>${empresa.rubro}</td>
                 <td>${empresa.cedula_representante_legal}</td>
                 <td>
-                    <button class="btn btn-edit" onclick="editarEmpresa(${empresa.nit})">Editar</button>
-                    <button class="btn btn-delete" onclick="eliminarEmpresa(${empresa.nit})">Eliminar</button>
+                    <button class="btn btn-edit" onclick="editarEmpresa('${empresa.nit}')">Editar</button>
+                    <button class="btn btn-delete" onclick="eliminarEmpresa('${empresa.nit}')">Eliminar</button>
                 </td>
             `;
             tbody.appendChild(tr);
@@ -32,8 +32,19 @@ async function agregarEmpresa() {
 }
 
 async function editarEmpresa(nit) {
-    alert('Editar empresa con NIT: ' + nit);
-    window.location.href = './empresas_editar.html';
+    try {
+        // Guardar NIT en localStorage
+        localStorage.setItem('empresaNIT', nit);
+        console.log('NIT guardado:', nit);
+        
+        // Usar ruta absoluta desde la raíz del proyecto
+        window.location.href = '/admin_usuarios/empresas_editar.html';
+        
+        // Alternativa: ruta relativa desde la ubicación actual
+        // window.location.href = '../admin_usuarios/empresas_editar.html';
+    } catch (error) {
+        console.error('Error al redirigir:', error);
+    }
 }
 
 async function eliminarEmpresa(nit) {
@@ -56,9 +67,6 @@ async function eliminarEmpresa(nit) {
         }
     }
 }
-
-// Cargar las empresas al cargar la página
-window.onload = cargarEmpresas;
 
 // Cargar las empresas al cargar la página
 window.onload = cargarEmpresas;
